@@ -3,239 +3,255 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#22160f">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#22160F">
 <title>Les mots que je me raconte</title>
 <style>
 :root{
-  --dark:#22160f;
-  --brown:#4a3022;
-  --gold:#d9b47e;
-  --copper:#a87443;
-  --cream:#fbf6ee;
-  --ivory:#f5ede1;
+  --dark:#22160F;
+  --brown:#4A3022;
+  --gold:#E6C79A;
+  --copper:#A87443;
+  --ivory:#F5EDE1;
+  --paper:#FBF6EE;
 }
 *{box-sizing:border-box}
-html{min-height:100%;background:var(--dark)}
+html{background:var(--dark)}
 body{
   margin:0;
   min-height:100vh;
-  color:var(--cream);
+  color:var(--ivory);
   font-family:Georgia,serif;
-  background:radial-gradient(ellipse at 50% 25%,#62402d 0%,#352116 43%,#1c120d 100%);
+  background:
+    radial-gradient(ellipse at 50% 15%,#70482d 0%,transparent 60%),
+    linear-gradient(155deg,#362116,#22160F 80%);
 }
-body:before{
+body::before{
   content:"";
-  position:fixed;inset:0;pointer-events:none;
-  background-image:radial-gradient(#f5d7a1 1px,transparent 1px);
-  background-size:37px 43px;
-  opacity:.15;
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  opacity:.22;
+  background-image:
+    radial-gradient(#E6C79A 1px,transparent 1px);
+  background-size:43px 47px;
 }
 button,input{font:inherit}
 button{cursor:pointer}
 button:focus-visible,input:focus-visible{
   outline:2px solid var(--gold);
-  outline-offset:4px;
+  outline-offset:3px;
 }
 .app{
   position:relative;
   z-index:1;
-  max-width:620px;
+  max-width:640px;
   min-height:100dvh;
   margin:auto;
-  padding:30px 23px 50px;
+  padding:28px 22px 45px;
   display:flex;
   flex-direction:column;
   justify-content:center;
 }
-.top{
+.brand{
   text-align:center;
   color:var(--gold);
-  letter-spacing:3px;
   font:10px Arial,sans-serif;
+  letter-spacing:2px;
   text-transform:uppercase;
-  margin-bottom:32px;
+  margin-bottom:35px;
 }
 .progress{
-  display:flex;gap:7px;
-  margin-bottom:36px;
+  display:flex;
+  gap:7px;
+  margin-bottom:32px;
 }
 .progress span{
-  flex:1;height:2px;
-  background:#8c6a4a;
-  opacity:.35;
+  height:2px;
+  flex:1;
+  background:#806048;
+  opacity:.4;
 }
 .progress span.active{
-  background:var(--gold);opacity:1;
+  background:var(--gold);
+  opacity:1;
 }
-.screen{animation:appear .55s ease both}
-@keyframes appear{
-  from{opacity:0;transform:translateY(17px)}
+.screen{animation:fade .5s ease both}
+@keyframes fade{
+  from{opacity:0;transform:translateY(14px)}
   to{opacity:1;transform:translateY(0)}
 }
 .symbol{
   text-align:center;
-  font-size:43px;
+  font-size:42px;
   color:var(--gold);
-  margin-bottom:23px;
-  text-shadow:0 0 30px #d9b47e77;
+  margin-bottom:22px;
+  text-shadow:0 0 25px #E6C79A88;
 }
 .eyebrow{
   text-align:center;
-  text-transform:uppercase;
-  letter-spacing:3px;
   font:11px Arial,sans-serif;
+  letter-spacing:3px;
+  text-transform:uppercase;
   color:var(--gold);
-  margin-bottom:20px;
+  margin-bottom:22px;
 }
 h1,h2{
-  text-align:center;
   font-weight:normal;
-  line-height:1.17;
+  text-align:center;
+  line-height:1.2;
   margin:0 0 25px;
 }
-h1{font-size:clamp(42px,10vw,68px)}
-h2{font-size:clamp(30px,7vw,43px)}
+h1{font-size:clamp(42px,10vw,65px)}
+h2{font-size:clamp(29px,7vw,43px)}
 em{color:var(--gold);font-weight:normal}
-.intro,.bodytext{
-  text-align:center;
-  line-height:1.85;
+.bodytext{
   font-size:17px;
-  color:#ead9c7;
-  margin:0 auto 28px;
-  max-width:460px;
-}
-.small{
-  font-size:13px;
-  line-height:1.7;
-  color:#c9ac91;
+  line-height:1.85;
   text-align:center;
-}
-.goldline{
-  width:75px;height:1px;
-  margin:25px auto;
-  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  color:#ead9c7;
+  max-width:500px;
+  margin:0 auto 26px;
 }
 .primary{
-  display:block;
   width:100%;
-  border:1px solid #d9b47e;
-  border-radius:50px;
-  padding:19px 22px;
-  background:linear-gradient(120deg,#e6c79a,#bc8c55);
-  color:#2a1a10;
+  border:1px solid var(--gold);
+  border-radius:40px;
+  background:linear-gradient(120deg,#E6C79A,#B98952);
+  color:#28190f;
+  padding:19px;
   font-size:15px;
   font-weight:bold;
-  margin:22px 0 12px;
+  margin:20px 0 10px;
 }
 .secondary{
-  display:block;
   width:100%;
-  border:1px solid #9d7756;
+  border:1px solid #B98952;
   border-radius:40px;
   background:transparent;
   color:var(--gold);
-  padding:15px;
-  margin-top:12px;
+  padding:16px;
+  margin:12px 0;
 }
-.choices{display:grid;gap:12px;margin:25px 0}
+.choices{
+  display:grid;
+  gap:12px;
+  margin:25px 0;
+}
 .choice{
-  width:100%;
   text-align:left;
-  background:#f5ede10d;
-  color:var(--cream);
-  border:1px solid #d9b47e55;
-  border-radius:17px;
-  padding:19px 20px;
+  width:100%;
+  border:1px solid #D9B47E66;
+  border-radius:16px;
+  background:#F5EDE10D;
+  color:var(--ivory);
+  padding:19px;
   line-height:1.5;
   font-size:16px;
-  transition:background .2s,border-color .2s;
+  transition:.2s;
 }
 .choice.selected{
-  background:#d9b47e27;
+  background:#D9B47E2B;
   border-color:var(--gold);
 }
-.choice .num{
+.choice .star{
   color:var(--gold);
   margin-right:10px;
-  font-size:13px;
+}
+.goldline{
+  width:80px;
+  height:1px;
+  margin:25px auto;
+  background:linear-gradient(90deg,transparent,var(--copper),transparent);
 }
 .paper{
-  background:linear-gradient(145deg,#fffaf0,#e8d5bb);
+  background:linear-gradient(145deg,#FFF9EF,#E8D5BB);
   color:var(--brown);
   border-radius:8px;
-  padding:33px 24px;
-  box-shadow:0 12px 50px #0005;
-  position:relative;
+  padding:35px 25px;
   text-align:center;
+  box-shadow:0 15px 55px #0006;
 }
-.paper:before{
+.paper::before{
   content:"✦";
   display:block;
-  font-size:24px;
+  font-size:26px;
   color:var(--copper);
-  margin-bottom:17px;
+  margin-bottom:18px;
 }
 .paper h2{color:var(--brown)}
 .paper p{line-height:1.85}
-.paper .eyebrow{color:#936b46}
-.paper .goldline{background:var(--copper)}
-.mantra{
-  font-size:18px;
-  line-height:2.05;
-  white-space:pre-line;
-  color:#4a3022;
-}
-input{
-  width:100%;
-  background:#fff8eb;
-  border:1px solid var(--copper);
-  border-radius:12px;
-  padding:17px;
-  color:var(--brown);
-  font-size:17px;
-  text-align:center;
-}
+.paper .eyebrow{color:#8C6545}
 .quote{
+  font-size:22px;
+  line-height:1.65;
   font-style:italic;
   color:var(--gold);
   text-align:center;
-  font-size:22px;
-  line-height:1.65;
-  margin:24px 0;
+  margin:25px 0;
+}
+.mantra{
+  white-space:pre-line;
+  line-height:2;
+  font-size:18px;
+}
+.small{
+  text-align:center;
+  color:#CCAF93;
+  font-size:13px;
+  line-height:1.7;
+}
+input{
+  width:100%;
+  padding:17px;
+  border-radius:12px;
+  border:1px solid var(--copper);
+  background:#FFF9EF;
+  color:var(--brown);
+  text-align:center;
+  font-size:17px;
 }
 .footer{
   text-align:center;
-  color:#b99a7d;
+  margin-top:35px;
+  color:#B99A7D;
   font:10px Arial,sans-serif;
-  margin-top:38px;
   letter-spacing:1px;
 }
 @media(prefers-reduced-motion:reduce){
-  *,*:before,*:after{
+  *,*::before,*::after{
     animation:none!important;
     transition:none!important;
   }
 }
 </style>
 </head>
+
 <body>
 <main class="app">
-  <div class="top">Les soins de lumière d'Aurore</div>
+  <div class="brand">Les soins de lumière d'Aurore</div>
   <div id="progress" class="progress"></div>
+
   <section id="screen" class="screen" aria-live="polite">
     <div class="symbol">✧</div>
     <h1>Les mots que<br><em>je me raconte</em></h1>
-    <p class="intro">
-      Il y a des mots que tu te répètes depuis
-      si longtemps que tu as fini par les croire.
+    <p class="bodytext">
+      Il y a des mots que tu te répètes depuis si longtemps
+      que tu as fini par les croire.
+      <br><br>
+      Et si, aujourd'hui, tu pouvais en choisir d'autres ?
     </p>
     <button class="primary" onclick="start()">
       Découvrir mes mots ✦
     </button>
+    <p class="small">Quelques minutes, juste pour toi.</p>
   </section>
-  <footer class="footer">UNE EXPÉRIENCE INTÉRIEURE ✧</footer>
+
+  <footer class="footer">
+    UNE EXPÉRIENCE INTÉRIEURE ✧
+  </footer>
 </main>
+
 <script>
 "use strict";
 
@@ -244,112 +260,95 @@ const progress=document.getElementById("progress");
 
 let step=0;
 let answers=[];
-let chosenAffirmation=0;
-let firstName="";
 let profile="place";
+let selectedAffirmation=0;
+let firstName="";
 
-const profiles={
+const categories={
   place:{
-    title:"La place que tu t'autorises",
-    thought:"Je dois encore prouver que je suis assez.",
-    insight:"Tu sembles parfois attendre d'être certaine de ta valeur avant de t'autoriser à avancer. Et si tu pouvais commencer à prendre ta place, même avec tes doutes ?",
-    affirmations:[
-      "J'ai le droit de prendre ma place, à mon rythme.",
-      "Ma présence a de la valeur.",
-      "Je peux avancer même lorsque je doute."
-    ],
-    action:"Aujourd'hui, exprime une envie ou une opinion que tu aurais habituellement gardée pour toi."
+    title:"La peur de ne pas être à la hauteur",
+    old:"Je ne suis peut-être pas capable.",
+    insight:"Tu sembles parfois douter de tes capacités avant même de t'être donné la possibilité d'essayer. Peut-être que tu attends d'être totalement prête pour oser avancer.",
+    affirmation:"Je peux avancer même lorsque je doute.",
+    action:"Aujourd'hui, fais un petit pas vers quelque chose que tu repousses depuis un moment."
   },
   regard:{
-    title:"Le regard des autres",
-    thought:"Que vont-ils penser de moi ?",
-    insight:"Il arrive peut-être que l'avis des autres prenne tellement de place que tu oublies ce que toi, tu souhaites vraiment. Ton ressenti mérite aussi d'être entendu.",
-    affirmations:[
-      "Je m'autorise à être moi, même si je ne plais pas à tout le monde.",
-      "Mon avis compte autant que celui des autres.",
-      "Je peux choisir ce qui me ressemble."
-    ],
-    action:"Fais un petit choix aujourd'hui sans demander l'avis de quelqu'un d'autre."
+    title:"Le poids du regard des autres",
+    old:"Que vont-ils penser de moi ?",
+    insight:"L'avis des autres semble parfois prendre beaucoup de place dans tes décisions. Et dans tout ça, il est possible que tes propres envies passent au second plan.",
+    affirmation:"Je m'autorise à être moi, même si je ne plais pas à tout le monde.",
+    action:"Aujourd'hui, fais un choix qui te ressemble sans demander l'avis de quelqu'un d'autre."
   },
   choix:{
-    title:"La permission de te choisir",
-    thought:"Je dois penser aux autres avant moi.",
-    insight:"Tu as peut-être pris l'habitude de faire passer les besoins des autres avant les tiens. Pourtant, ce dont tu as besoin mérite aussi une place dans ta vie.",
-    affirmations:[
-      "Mes besoins ont aussi leur importance.",
-      "Je peux prendre soin de moi sans culpabiliser.",
-      "Je m'autorise à me choisir."
-    ],
-    action:"Accorde-toi quinze minutes pour quelque chose qui te fait du bien, simplement parce que tu en as envie."
+    title:"La difficulté à te choisir",
+    old:"Je dois penser aux autres avant moi.",
+    insight:"Tu sembles avoir pris l'habitude de faire passer les besoins des autres avant les tiens. À force, il devient parfois difficile de t'accorder la même attention.",
+    affirmation:"Mes besoins ont aussi leur importance.",
+    action:"Accorde-toi quinze minutes rien que pour toi, sans chercher à les justifier."
   },
   intuition:{
-    title:"La confiance en ta voix intérieure",
-    thought:"Et si je me trompais ?",
-    insight:"Tu ressens peut-être certaines choses très clairement, avant de commencer à les remettre en question. Tu peux apprendre à écouter ton intuition tout en gardant ton discernement.",
-    affirmations:[
-      "J'apprends à écouter ce que je ressens.",
-      "Je peux faire confiance à mon discernement.",
-      "Ma voix intérieure mérite mon attention."
-    ],
-    action:"Note un ressenti que tu as aujourd'hui, sans chercher immédiatement à le faire valider."
+    title:"Le doute envers tes propres ressentis",
+    old:"Et si je me trompais ?",
+    insight:"Tu peux ressentir quelque chose très clairement, puis commencer à le remettre en question. Peut-être que tu cherches souvent une confirmation extérieure avant de faire confiance à ton jugement.",
+    affirmation:"J'apprends à écouter ce que je ressens.",
+    action:"Aujourd'hui, note un ressenti personnel sans chercher immédiatement à le faire valider."
   },
   merite:{
-    title:"Le droit de recevoir",
-    thought:"Je ne mérite peut-être pas tout ça.",
-    insight:"Il se peut que tu aies du mal à accueillir ce qui est bon pour toi, comme s'il fallait toujours en faire davantage pour le mériter. Et si tu t'autorisais à recevoir un peu plus ?",
-    affirmations:[
-      "Je mérite de vivre des choses qui me font du bien.",
-      "Je peux accueillir ce qui vient à moi.",
-      "Je m'autorise à recevoir sans devoir tout justifier."
-    ],
+    title:"La difficulté à reconnaître ta valeur",
+    old:"Je ne mérite peut-être pas mieux.",
+    insight:"Tu sembles parfois minimiser tes envies ou tes réussites. Comme si tu devais toujours en faire davantage avant de pouvoir accueillir de belles choses.",
+    affirmation:"Je mérite de vivre des choses qui me font du bien.",
     action:"Aujourd'hui, accueille un compliment ou une attention avec un simple merci."
   }
 };
 
 const questions=[
   {
-    title:"Tu as envie de faire quelque chose pour toi...",
-    text:"Mais au moment de passer à l'action, une petite voix se fait entendre. Elle te dit quoi ?",
+    heading:"Ce qui me freine",
+    title:"Quand tu aimerais changer quelque chose dans ta vie, qu'est-ce qui te freine le plus souvent ?",
     options:[
-      ["Je ne suis peut-être pas à la hauteur.","place"],
-      ["Les autres vont me juger.","regard"],
-      ["Je devrais plutôt penser aux autres.","choix"],
-      ["Et si mon ressenti était faux ?","intuition"],
-      ["Je ne mérite peut-être pas cette chance.","merite"]
+      ["J'ai peur de ne pas être capable d'y arriver.","place"],
+      ["Je pense beaucoup à ce que les autres vont en dire.","regard"],
+      ["Je finis toujours par faire passer les autres avant moi.","choix"],
+      ["Je doute tellement de mes choix que je reste bloquée.","intuition"],
+      ["Au fond, j'ai du mal à croire que je mérite mieux.","merite"]
     ]
   },
   {
-    title:"Imagine qu'une belle opportunité se présente...",
-    text:"Elle te donne envie, mais elle te fait aussi un peu peur. Qu'est-ce qui te freine le plus ?",
+    heading:"Ce que ça change dans mon quotidien",
+    title:"Quand cette peur ou ce doute prend le dessus, qu'est-ce que tu as tendance à faire ?",
     options:[
-      ["J'ai peur de ne pas être capable.","place"],
-      ["J'ai peur de décevoir ou d'être critiquée.","regard"],
-      ["Je culpabilise de faire quelque chose pour moi.","choix"],
-      ["Je remets en question mon premier ressenti.","intuition"],
-      ["J'ai l'impression que c'est trop beau pour moi.","merite"]
+      ["Je repousse les choses, même celles qui me tiennent à cœur.","place"],
+      ["Je cherche à être rassurée ou à avoir l'avis des autres.","regard"],
+      ["Je dis oui alors qu'au fond, j'aimerais dire non.","choix"],
+      ["Je réfléchis tellement que je finis par ne rien décider.","intuition"],
+      ["Je minimise mes envies ou mes réussites.","merite"]
     ]
   },
   {
-    title:"Quand tu repenses à ta journée...",
-    text:"Quelle situation te laisse le plus souvent un petit pincement au cœur ?",
+    heading:"Ce que j'aimerais m'autoriser",
+    title:"Si tu pouvais te libérer un peu de ce qui te freine aujourd'hui, qu'aimerais-tu réussir à faire ?",
     options:[
-      ["Ne pas avoir osé m'affirmer.","place"],
-      ["Avoir changé d'avis pour plaire.","regard"],
-      ["M'être oubliée en faisant passer tout le monde avant.","choix"],
-      ["Ne pas avoir écouté ce que je ressentais.","intuition"],
-      ["Avoir minimisé quelque chose de beau qui m'est arrivé.","merite"]
+      ["Oser me lancer, même sans être certaine de réussir.","place"],
+      ["Être moi-même sans avoir constamment peur du jugement.","regard"],
+      ["Me choisir sans culpabiliser.","choix"],
+      ["Faire davantage confiance à mes choix et à mes ressentis.","intuition"],
+      ["Me sentir digne de recevoir de belles choses.","merite"]
     ]
   }
 ];
 
-function escapeHTML(value){
-  return String(value).replace(/[&<>"']/g,c=>({
-    "&":"&amp;","<":"&lt;",">":"&gt;",
-    '"':"&quot;","'":"&#39;"
+function escapeHTML(str){
+  return String(str).replace(/[&<>"']/g,c=>({
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#39;"
   })[c]);
 }
 
-function setScreen(html){
+function render(html){
   screen.classList.remove("screen");
   screen.innerHTML=html;
   void screen.offsetWidth;
@@ -367,38 +366,62 @@ function setProgress(n){
 }
 
 function start(){
-  answers=[];
   step=0;
-  question();
+  answers=[];
+  firstName="";
+  selectedAffirmation=0;
+  showQuestion();
 }
 
-function question(){
+function showQuestion(){
   setProgress(step+1);
   const q=questions[step];
+
   let html=`
-    <div class="eyebrow">Fragment ${step+1} sur 3</div>
+    <div class="eyebrow">Question ${step+1} sur 3</div>
     <div class="symbol">✧</div>
-    <h2>${q.title}</h2>
-    <p class="bodytext">${q.text}</p>
+    <h2>${q.heading}</h2>
+    <p class="bodytext">${q.title}</p>
     <div class="choices">`;
 
   q.options.forEach((option,i)=>{
     html+=`
       <button class="choice" onclick="answer(${i})">
-        <span class="num">0${i+1} ✦</span>
-        ${option[0]}
+        <span class="star">✦</span>${option[0]}
       </button>`;
   });
 
   html+="</div>";
-  setScreen(html);
+  render(html);
 }
 
 function answer(i){
   answers.push(questions[step].options[i][1]);
   step++;
-  if(step<questions.length)question();
-  else reveal();
+  if(step<questions.length){
+    showQuestion();
+  }else{
+    showTransition();
+  }
+}
+
+function showTransition(){
+  setProgress(3);
+  render(`
+    <div class="symbol">✧</div>
+    <div class="eyebrow">Un instant pour toi</div>
+    <h2>Tu viens de mettre<br><em>des mots sur quelque chose.</em></h2>
+    <p class="bodytext">
+      Peut-être que certaines de ces pensées t'accompagnent
+      depuis longtemps.
+      <br><br>
+      Maintenant, imagine un instant que cette petite voix
+      ne décide plus systématiquement à ta place...
+    </p>
+    <button class="primary" onclick="showReveal()">
+      Découvrir ce qui se dessine ✦
+    </button>
+  `);
 }
 
 function determineProfile(){
@@ -406,119 +429,171 @@ function determineProfile(){
   const order=["place","regard","choix","intuition","merite"];
   order.forEach(k=>scores[k]=0);
   answers.forEach(k=>scores[k]++);
-  profile=order.reduce((best,k)=>
-    scores[k]>scores[best]?k:best
-  ,answers[0]||"place");
+
+  profile=answers[0];
+
+  order.forEach(k=>{
+    if(scores[k]>scores[profile])profile=k;
+  });
 }
 
-function reveal(){
+function showReveal(){
   determineProfile();
   setProgress(4);
-  const p=profiles[profile];
+  const p=categories[profile];
 
-  setScreen(`
-    <div class="eyebrow">Ce qui se dessine</div>
+  render(`
+    <div class="eyebrow">Le miroir de tes pensées</div>
     <div class="paper">
       <h2>${p.title}</h2>
       <p>Une pensée qui pourrait parfois revenir :</p>
       <div class="goldline"></div>
       <p style="font-size:23px;font-style:italic">
-        « ${p.thought} »
+        « ${p.old} »
       </p>
       <div class="goldline"></div>
       <p>${p.insight}</p>
     </div>
     <p class="small" style="margin-top:25px">
-      C'est une piste de réflexion à partir de tes réponses,
-      pas une vérité définitive sur toi.
+      Ce résultat est une piste de réflexion,
+      construite à partir de tes réponses.
+      Il ne définit pas qui tu es.
     </p>
-    <button class="primary" onclick="chooseWords()">
-      Et si je choisissais d'autres mots ? ✦
+    <button class="primary" onclick="showAffirmations()">
+      Choisir de nouveaux mots ✦
     </button>
   `);
 }
 
-function chooseWords(){
-  const p=profiles[profile];
-  setProgress(4);
+function getAffirmations(){
+  const result=[];
+  const seen=new Set();
+
+  answers.forEach(key=>{
+    if(!seen.has(key)){
+      seen.add(key);
+      result.push(categories[key].affirmation);
+    }
+  });
+
+  if(result.length===1){
+    const extras={
+      place:[
+        "J'ai le droit d'apprendre en avançant.",
+        "Je peux prendre ma place à mon rythme."
+      ],
+      regard:[
+        "Mon avis compte autant que celui des autres.",
+        "Je peux choisir ce qui me ressemble."
+      ],
+      choix:[
+        "Je peux me choisir sans culpabiliser.",
+        "Je respecte aussi mes propres besoins."
+      ],
+      intuition:[
+        "Ma voix intérieure mérite mon attention.",
+        "Je peux faire confiance à mon discernement."
+      ],
+      merite:[
+        "Je peux accueillir ce qui me fait du bien.",
+        "Ma valeur ne dépend pas de ce que je réussis."
+      ]
+    };
+    result.push(...extras[answers[0]]);
+  }
+
+  if(result.length===2){
+    result.push("Je m'autorise à avancer à mon rythme.");
+  }
+
+  return result.slice(0,3);
+}
+
+function showAffirmations(){
+  const affirmations=getAffirmations();
   let html=`
-    <div class="eyebrow">Le pouvoir de choisir</div>
+    <div class="eyebrow">Les mots que je choisis</div>
     <div class="symbol">✦</div>
-    <h2>Quels mots veux-tu<br><em>t'offrir aujourd'hui ?</em></h2>
+    <h2>Et si tu commençais<br><em>à te parler autrement ?</em></h2>
     <p class="bodytext">
-      Tu n'as pas besoin de croire immédiatement
-      chaque mot. Choisis simplement la phrase
-      qui te fait du bien, celle que tu aimerais
-      apprendre à accueillir.
+      Voici trois phrases inspirées de tes réponses.
+      Choisis celle qui résonne le plus en toi aujourd'hui.
     </p>
     <div class="choices">`;
 
-  p.affirmations.forEach((a,i)=>{
+  affirmations.forEach((a,i)=>{
     html+=`
-      <button class="choice" onclick="selectWords(${i})">
-        <span class="num">✧</span>${a}
+      <button class="choice" onclick="chooseAffirmation(${i})">
+        <span class="star">✧</span>${escapeHTML(a)}
       </button>`;
   });
 
   html+="</div>";
-  setScreen(html);
+  render(html);
 }
 
-function selectWords(i){
-  chosenAffirmation=i;
+function chooseAffirmation(i){
+  selectedAffirmation=i;
   setProgress(5);
-  setScreen(`
+
+  render(`
     <div class="eyebrow">Ton nouveau chapitre</div>
     <div class="symbol">✧</div>
     <h2>Et maintenant,<br><em>parlons de toi.</em></h2>
     <p class="bodytext">
-      Comment souhaites-tu que ton mantra s'adresse à toi ?
+      Ton mantra va commencer par ton prénom,
+      comme une promesse que tu te fais à toi-même.
     </p>
-    <label for="firstname" class="small"
+    <label class="small" for="firstname"
       style="display:block;margin-bottom:12px">
-      TON PRÉNOM
+      COMMENT T'APPELLES-TU ?
     </label>
     <input id="firstname" maxlength="35"
-      placeholder="Ton prénom" autocomplete="given-name">
-    <button class="primary" onclick="makeMantra()">
+      autocomplete="given-name"
+      placeholder="Ton prénom">
+    <button class="primary" onclick="showMantra()">
       Révéler mon mantra ✦
     </button>
   `);
 }
 
-function buildMantra(){
-  const p=profiles[profile];
-  const name=firstName?firstName:"moi";
-  return [
-    "Moi, "+name+",",
+function getMantra(){
+  const affirmations=getAffirmations();
+  const chosen=affirmations[selectedAffirmation];
+  const lines=[
+    "Moi, "+(firstName||"moi")+",",
     "",
-    p.affirmations[chosenAffirmation],
+    chosen
+  ];
+
+  const other=affirmations.filter((_,i)=>i!==selectedAffirmation);
+  lines.push(...other);
+
+  lines.push(
     "Je m'autorise à avancer à mon rythme.",
     "J'écoute ce qui est important pour moi.",
     "Je respecte mes besoins.",
     "Je laisse grandir la confiance en moi.",
     "Je mérite une vie qui me ressemble.",
-    "Chaque petit pas compte.",
     "Je me choisis.",
     "Je suis à ma place.",
     "Je suis moi."
-  ].join("\n");
-}
+  );
 
-function makeMantra(){
-  const input=document.getElementById("firstname");
-  firstName=input.value.trim().slice(0,35);
-  showMantra();
+  return [...new Set(lines)].join("\n");
 }
 
 function showMantra(){
-  const p=profiles[profile];
-  const mantra=buildMantra();
+  const input=document.getElementById("firstname");
+  if(input)firstName=input.value.trim().slice(0,35);
 
-  setScreen(`
-    <div class="eyebrow">Les mots que je choisis</div>
-    <div class="paper" id="mantraCard">
-      <div class="eyebrow">Mon mantra personnel</div>
+  const mantra=getMantra();
+  const p=categories[profile];
+
+  render(`
+    <div class="eyebrow">Ton mantra personnel</div>
+    <div class="paper">
+      <div class="eyebrow">Les mots que je choisis</div>
       <h2>Je réécris<br>mon histoire</h2>
       <div class="goldline"></div>
       <div class="mantra">${escapeHTML(mantra)}</div>
@@ -527,38 +602,43 @@ function showMantra(){
         Les soins de lumière d'Aurore
       </p>
     </div>
+
     <button class="primary" onclick="copyMantra()">
       Copier mon mantra ✦
     </button>
-    <button class="secondary" onclick="saveMantra()">
+    <button class="secondary" onclick="downloadMantra()">
       Enregistrer mon mantra en texte
     </button>
+    <p id="feedback" class="small" role="status"></p>
+
     <div class="goldline"></div>
     <div class="eyebrow">Ton premier petit pas</div>
     <p class="quote">${p.action}</p>
     <p class="bodytext">
       Les mots peuvent ouvrir une porte.
-      Ce sont aussi les petits gestes du quotidien
-      qui leur donnent une place dans ta vie.
+      Et parfois, un tout petit geste suffit
+      pour commencer à leur donner une place.
     </p>
+
     <div class="goldline"></div>
     <h2>Et si tu allais<br><em>un peu plus loin ?</em></h2>
     <p class="bodytext">
-      Certaines croyances nous accompagnent depuis
-      longtemps. Les reconnaître est un premier pas.
-      Si tu ressens l'envie de les explorer plus
-      profondément, je t'invite à découvrir
+      Certaines croyances nous accompagnent
+      depuis longtemps.
+      <br><br>
+      Si tu ressens l'envie d'explorer plus
+      profondément ce qui te freine,
+      je t'invite à découvrir
       mon accompagnement Alchimie Cellulaire.
     </p>
-    <button class="secondary" onclick="restart()">
+    <button class="secondary" onclick="start()">
       Recommencer l'expérience
     </button>
-    <p id="feedback" class="small" role="status"></p>
   `);
 }
 
 function copyMantra(){
-  const text=buildMantra();
+  const text=getMantra();
   const feedback=document.getElementById("feedback");
 
   if(navigator.clipboard && window.isSecureContext){
@@ -577,32 +657,31 @@ function fallbackCopy(text){
   area.style.opacity="0";
   document.body.appendChild(area);
   area.select();
-  let ok=false;
-  try{ok=document.execCommand("copy")}catch(e){}
+
+  let success=false;
+  try{
+    success=document.execCommand("copy");
+  }catch(e){}
+
   area.remove();
+
   document.getElementById("feedback").textContent=
-    ok?"Ton mantra est copié ✨":
-    "Tu peux sélectionner et copier ton mantra ci-dessus.";
+    success?"Ton mantra est copié ✨":
+    "Sélectionne ton mantra pour le copier.";
 }
 
-function saveMantra(){
-  const blob=new Blob([buildMantra()],{
+function downloadMantra(){
+  const blob=new Blob([getMantra()],{
     type:"text/plain;charset=utf-8"
   });
   const url=URL.createObjectURL(blob);
-  const a=document.createElement("a");
-  a.href=url;
-  a.download="mon-mantra-personnel.txt";
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
+  const link=document.createElement("a");
+  link.href=url;
+  link.download="mon-mantra-personnel.txt";
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
   setTimeout(()=>URL.revokeObjectURL(url),2000);
-}
-
-function restart(){
-  firstName="";
-  chosenAffirmation=0;
-  start();
 }
 </script>
 </body>
