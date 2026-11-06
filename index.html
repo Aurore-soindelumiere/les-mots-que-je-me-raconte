@@ -3,977 +3,1695 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#22160F">
 <title>Les mots que je me raconte | Aurore</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+
 <style>
-:root{
- --dark:#22160F;--brown:#4A3022;
- --copper:#A87443;--gold:#E6C79A;
- --ivory:#F5EDE1;--paper:#FBF6EE;
-}
-*{box-sizing:border-box}
-html{background:var(--dark)}
-body{
- margin:0;min-height:100vh;color:var(--ivory);
- font-family:"DM Sans",sans-serif;
- background:var(--dark);overflow-x:hidden;
-}
-button,input{font:inherit}
-button{cursor:pointer}
-button:focus-visible,input:focus-visible,a:focus-visible{
- outline:2px solid var(--gold);outline-offset:4px;
-}
-button:disabled{opacity:.55;cursor:wait}
-#ambient{
- position:fixed;inset:0;pointer-events:none;overflow:hidden;
- background:
- radial-gradient(ellipse at 50% 25%,#754a3066,transparent 65%),
- linear-gradient(150deg,#362116,#22160F 85%);
-}
-#ambient:after{
- content:"";position:absolute;inset:0;
- background-image:radial-gradient(#E6C79A 1px,transparent 1px);
- background-size:47px 53px;opacity:.13;
-}
-.glow{
- position:absolute;width:300px;height:300px;
- border-radius:50%;filter:blur(65px);
- background:#A8744333;
- animation:drift 12s ease-in-out infinite alternate;
-}
-.glow.a{top:-80px;left:-100px}
-.glow.b{right:-140px;bottom:0;animation-delay:-5s}
-@keyframes drift{
- to{transform:translate(70px,80px) scale(1.3)}
-}
-#particles{
- position:fixed;inset:0;pointer-events:none;
- overflow:hidden;z-index:20;
-}
-.particle{
- position:absolute;width:4px;height:4px;border-radius:50%;
- background:var(--gold);box-shadow:0 0 12px var(--gold);
- animation:burst 1.3s ease-out forwards;
-}
-@keyframes burst{
- to{transform:translate(var(--x),var(--y)) scale(0);opacity:0}
-}
-.app{
- position:relative;z-index:2;
- width:min(100%,760px);min-height:100dvh;
- margin:auto;padding:22px clamp(16px,5vw,38px) 35px;
- display:flex;flex-direction:column;justify-content:center;
-}
-.app.long{justify-content:flex-start}
-.brand{
- text-align:center;color:var(--gold);
- font-size:10px;letter-spacing:2px;
- text-transform:uppercase;margin-bottom:20px;
-}
-.screen{animation:appear .55s ease both}
-@keyframes appear{
- from{opacity:0;transform:translateY(14px)}
- to{opacity:1;transform:translateY(0)}
-}
-h1,h2,h3{
- font-family:"Cormorant Garamond",Georgia,serif;
- font-weight:500;text-align:center;line-height:1.1;
-}
-h1{font-size:clamp(45px,9vw,75px);margin:0 0 17px}
-h2{font-size:clamp(34px,7vw,53px);margin:0 0 18px}
-h3{font-size:30px;margin:0 0 12px}
-.script{font-family:"Great Vibes",cursive;color:var(--gold)}
-.kicker{
- text-align:center;color:var(--gold);
- font-size:10px;letter-spacing:2.5px;
- text-transform:uppercase;margin-bottom:15px;
-}
-.lead{
- max-width:530px;margin:0 auto 19px;
- text-align:center;color:#f0dfce;
- font-size:clamp(14px,2vw,16px);line-height:1.75;
-}
-.muted{
- text-align:center;color:#c6a88a;
- font-size:12px;line-height:1.65;
-}
-.primary,.secondary{
- display:block;width:100%;border-radius:50px;
- padding:16px 20px;text-align:center;
- font-size:14px;text-decoration:none;
- transition:transform .2s,box-shadow .2s;
-}
-.primary{
- margin:17px 0 9px;
- color:#2d1c11;font-weight:600;
- border:1px solid #f3d8aa;
- background:linear-gradient(115deg,#f3ddb7,#b9844c);
- box-shadow:0 8px 30px #a8744329;
-}
-.secondary{
- margin:9px 0;background:transparent;
- color:var(--gold);border:1px solid #a8744388;
-}
-.primary:active,.secondary:active{transform:scale(.97)}
-.progress{
- display:flex;justify-content:center;
- gap:8px;margin:0 auto 23px;
-}
-.progress span{
- width:55px;height:2px;background:#76533c;
-}
-.progress span.on{
- background:var(--gold);
- box-shadow:0 0 10px #E6C79A99;
-}
-.symbol{
- text-align:center;font-size:32px;color:var(--gold);
- margin-bottom:15px;animation:pulse 3s ease-in-out infinite;
-}
-@keyframes pulse{
- 50%{opacity:.55;transform:scale(1.12)}
-}
-.choices{display:grid;gap:10px;margin:18px 0}
-.choice{
- width:100%;padding:15px 16px;text-align:left;
- color:var(--ivory);font-size:14px;line-height:1.5;
- border:1px solid #b88c6255;border-radius:15px;
- background:linear-gradient(110deg,#ffffff0d,#ffffff05);
- transition:background .2s,border-color .2s,transform .2s;
-}
-.choice:active{transform:scale(.98)}
-.choice.selected{
- background:#A8744333;border-color:var(--gold);
-}
-.choice .star{color:var(--gold);margin-right:9px}
-.paper{
- position:relative;overflow:hidden;
- background:radial-gradient(ellipse at 50% 10%,#fffefa,#f0dfc8 75%,#e2c9a9);
- color:var(--brown);padding:27px 22px;
- border:1px solid #fff8eb;border-radius:8px;
- text-align:center;box-shadow:0 14px 45px #0007;
-}
-.paper:before{
- content:"";position:absolute;inset:8px;
- border:1px solid #A8744355;pointer-events:none;
-}
-.paper h2{color:var(--brown)}
-.paper p{font-size:15px;line-height:1.7}
-.paper .kicker{color:#8b623e}
-.divider{
- width:80px;height:1px;margin:17px auto;
- background:linear-gradient(90deg,transparent,var(--copper),transparent);
-}
-.note{
- border-left:1px solid var(--copper);
- padding:15px 18px;margin:18px 0;
- background:#ffffff09;color:#f0ddc7;
- font:24px/1.6 "Cormorant Garamond",serif;
-}
-.oldwords,.newwords{
- font:clamp(29px,6vw,43px)/1.35 "Cormorant Garamond",serif;
- text-align:center;color:var(--gold);
-}
-.oldwords{
- min-height:110px;display:flex;
- align-items:center;justify-content:center;
- transition:opacity .7s,filter .7s,transform .7s;
-}
-.oldwords.dissolve{
- opacity:0;filter:blur(15px);transform:scale(1.2);
-}
-.newwords{animation:reveal 1.1s ease both}
-@keyframes reveal{
- from{opacity:0;filter:blur(15px);transform:scale(.9)}
- to{opacity:1;filter:blur(0);transform:scale(1)}
-}
-input{
- width:100%;padding:16px;text-align:center;
- background:var(--paper);color:var(--brown);
- border:1px solid var(--copper);border-radius:12px;
- font-size:17px;
-}
-.mantra{
- display:flex;flex-direction:column;gap:4px;
- font:clamp(20px,3.5vw,26px)/1.24 "Cormorant Garamond",serif;
-}
-.mantra-line{
- display:block;opacity:0;transform:translateY(8px);
- animation:lineIn .5s ease forwards;
-}
-.mantra-line.first{
- font-weight:600;color:#81532f;
- font-size:1.16em;margin-bottom:7px;
-}
-.mantra-line.last{
- font-weight:600;color:#81532f;margin-top:5px;
-}
-@keyframes lineIn{
- to{opacity:1;transform:translateY(0)}
-}
-.action{
- padding:20px;border:1px solid #A8744377;
- border-radius:18px;background:#ffffff0a;
- margin:20px 0;text-align:center;
-}
-.action p{line-height:1.65;margin:0}
-.footer{
- text-align:center;color:#aa8a70;
- font-size:10px;letter-spacing:1px;margin-top:25px;
-}
-.result-layout{display:grid;gap:22px}
-.result-after{min-width:0}
-#feedback{min-height:18px}
-@media(min-width:1000px){
- .app.long{width:min(100%,1050px)}
- .result-layout{
-  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
-  align-items:start;gap:35px;
- }
- .result-layout .paper{position:sticky;top:25px}
-}
-@media(max-width:480px){
- .app{padding:17px 16px 28px}
- .brand{font-size:9px;margin-bottom:16px}
- .paper{padding:22px 16px}
- .paper:before{inset:6px}
- .mantra{font-size:21px;gap:3px;line-height:1.2}
- .choice{padding:14px}
- .divider{margin:14px auto}
-}
-/* NOUVEL ACCUEIL */
-.intro-stage{
- position:relative;height:clamp(250px,45vh,380px);
- display:flex;align-items:center;justify-content:center;
- isolation:isolate;
-}
-.intro-halo{
- position:absolute;width:245px;height:245px;
- border-radius:50%;
- background:radial-gradient(circle,#D9B47E55,transparent 70%);
- filter:blur(14px);animation:halo 4s ease-in-out infinite;
-}
-@keyframes halo{
- 50%{transform:scale(1.25);opacity:.6}
-}
-.seal{
- width:clamp(145px,34vw,225px);
- aspect-ratio:1;position:relative;z-index:2;
- border-radius:50%;overflow:hidden;
- box-shadow:0 0 55px #A8744366;
- animation:sealIn 1.4s cubic-bezier(.2,.8,.2,1) both,
-            sealFloat 5s ease-in-out 1.4s infinite;
-}
-.seal img{
- width:100%;height:100%;object-fit:cover;
- display:block;
-}
-.seal-fallback{
- width:100%;height:100%;display:grid;place-items:center;
- border:3px double var(--gold);border-radius:50%;
- background:radial-gradient(circle,#72452d,#2d1b13);
- color:var(--gold);
- font:64px "Cormorant Garamond",serif;
-}
-@keyframes sealIn{
- from{opacity:0;transform:scale(.45) rotate(-20deg)}
- to{opacity:1;transform:scale(1) rotate(0)}
-}
-@keyframes sealFloat{
- 50%{transform:translateY(-9px)}
-}
-.orbit{
- position:absolute;width:270px;height:270px;
- border:1px solid #D9B47E55;border-radius:50%;
- animation:rotate 30s linear infinite;
-}
-.orbit.two{
- width:315px;height:315px;border-style:dashed;
- opacity:.45;animation-direction:reverse;
-}
-@keyframes rotate{to{transform:rotate(360deg)}}
-.thought{
- position:absolute;z-index:3;
- font:italic clamp(15px,3vw,21px) "Cormorant Garamond",serif;
- color:#F0D3AA;
- text-shadow:0 0 20px #000;
- animation:thoughtFloat 5s ease-in-out infinite alternate;
-}
-.thought.t1{top:6%;left:0}
-.thought.t2{top:15%;right:0;animation-delay:-2s}
-.thought.t3{bottom:12%;left:0;animation-delay:-3s}
-.thought.t4{bottom:6%;right:0;animation-delay:-1s}
-@keyframes thoughtFloat{
- to{transform:translateY(-16px);opacity:.48}
-}
-.intro-title{
- animation:appear 1s .3s both;
-}
-.intro-copy{max-width:510px}
-.intro-button{
- position:relative;overflow:hidden;
- animation:appear 1s .6s both;
-}
-.intro-button:after{
- content:"";position:absolute;top:-50%;left:-80%;
- width:40%;height:200%;
- background:#ffffff77;transform:rotate(25deg);
- animation:shine 4s 1.5s infinite;
-}
-@keyframes shine{
- 0%,65%{left:-80%}
- 100%{left:150%}
-}
-.intro-exit .seal{
- animation:sealOpen .85s ease-in forwards;
-}
-.intro-exit .thought{
- animation:vanish .6s ease forwards;
-}
-@keyframes sealOpen{
- 45%{transform:scale(1.15);filter:brightness(1.8)}
- 100%{transform:scale(1.8);opacity:0;filter:blur(20px)}
-}
-@keyframes vanish{to{opacity:0;filter:blur(10px)}}
-@media(max-width:480px){
- .intro-stage{height:265px}
- .orbit{width:215px;height:215px}
- .orbit.two{width:255px;height:255px}
- .seal{width:165px}
- .thought{font-size:16px}
-}
-@media(prefers-reduced-motion:reduce){
- *,*:before,*:after{
-  animation-duration:.01ms!important;
-  transition-duration:.01ms!important;
- }
+:root {
+  --dark: #22160F;
+  --brown: #4A3022;
+  --copper: #A87443;
+  --gold: #E6C79A;
+  --ivory: #F5EDE1;
+  --paper: #FBF6EE;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  background: var(--dark);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ivory);
+  font-family: "DM Sans", sans-serif;
+  background: var(--dark);
+  overflow-x: hidden;
+}
+
+button, input { font: inherit; }
+button { cursor: pointer; }
+
+button:focus-visible,
+input:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+}
+
+button:disabled {
+  opacity: .55;
+  cursor: wait;
+}
+
+#ambient {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 50% 25%, #754a3066, transparent 65%),
+    linear-gradient(150deg, #362116, #22160F 85%);
+}
+
+#ambient:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(#E6C79A 1px, transparent 1px);
+  background-size: 47px 53px;
+  opacity: .13;
+}
+
+.glow {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  filter: blur(65px);
+  background: #A8744333;
+  animation: drift 12s ease-in-out infinite alternate;
+}
+
+.glow.a { top: -80px; left: -100px; }
+.glow.b { right: -140px; bottom: 0; animation-delay: -5s; }
+
+@keyframes drift {
+  to { transform: translate(70px, 80px) scale(1.3); }
+}
+
+#particles {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 20;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 12px var(--gold);
+  animation: burst 1.3s ease-out forwards;
+}
+
+@keyframes burst {
+  to {
+    transform: translate(var(--x), var(--y)) scale(0);
+    opacity: 0;
+  }
+}
+
+.app {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 760px);
+  min-height: 100dvh;
+  margin: auto;
+  padding: 22px clamp(16px, 5vw, 38px) 35px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.app.long {
+  justify-content: flex-start;
+}
+
+.brand {
+  text-align: center;
+  color: var(--gold);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.screen {
+  animation: appear .55s ease both;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+h1, h2, h3 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 500;
+  text-align: center;
+  line-height: 1.1;
+}
+
+h1 {
+  font-size: clamp(45px, 9vw, 75px);
+  margin: 0 0 17px;
+}
+
+h2 {
+  font-size: clamp(34px, 7vw, 53px);
+  margin: 0 0 18px;
+}
+
+h3 {
+  font-size: 30px;
+  margin: 0 0 12px;
+}
+
+.script {
+  font-family: "Great Vibes", cursive;
+  color: var(--gold);
+}
+
+.kicker {
+  text-align: center;
+  color: var(--gold);
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}
+
+.lead {
+  max-width: 530px;
+  margin: 0 auto 19px;
+  text-align: center;
+  color: #f0dfce;
+  font-size: clamp(14px, 2vw, 16px);
+  line-height: 1.75;
+}
+
+.muted {
+  text-align: center;
+  color: #c6a88a;
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.primary, .secondary {
+  display: block;
+  width: 100%;
+  border-radius: 50px;
+  padding: 16px 20px;
+  text-align: center;
+  font-size: 14px;
+  text-decoration: none;
+  transition: transform .2s, box-shadow .2s;
+}
+
+.primary {
+  margin: 17px 0 9px;
+  color: #2d1c11;
+  font-weight: 600;
+  border: 1px solid #f3d8aa;
+  background: linear-gradient(115deg, #f3ddb7, #b9844c);
+  box-shadow: 0 8px 30px #a8744329;
+}
+
+.secondary {
+  margin: 9px 0;
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid #a8744388;
+}
+
+.primary:active, .secondary:active {
+  transform: scale(.97);
+}
+
+.progress {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 0 auto 23px;
+}
+
+.progress span {
+  width: 55px;
+  height: 2px;
+  background: #76533c;
+}
+
+.progress span.on {
+  background: var(--gold);
+  box-shadow: 0 0 10px #E6C79A99;
+}
+
+.symbol {
+  text-align: center;
+  font-size: 32px;
+  color: var(--gold);
+  margin-bottom: 15px;
+  animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: .55;
+    transform: scale(1.12);
+  }
+}
+
+.choices {
+  display: grid;
+  gap: 10px;
+  margin: 18px 0;
+}
+
+.choice {
+  width: 100%;
+  padding: 15px 16px;
+  text-align: left;
+  color: var(--ivory);
+  font-size: 14px;
+  line-height: 1.5;
+  border: 1px solid #b88c6255;
+  border-radius: 15px;
+  background: linear-gradient(110deg, #ffffff0d, #ffffff05);
+  transition: background .2s, border-color .2s, transform .2s;
+}
+
+.choice:active {
+  transform: scale(.98);
+}
+
+.choice.selected {
+  background: #A8744333;
+  border-color: var(--gold);
+}
+
+.choice .star {
+  color: var(--gold);
+  margin-right: 9px;
+}
+
+.paper {
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(
+    ellipse at 50% 10%,
+    #fffefa,
+    #f0dfc8 75%,
+    #e2c9a9
+  );
+  color: var(--brown);
+  padding: 27px 22px;
+  border: 1px solid #fff8eb;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 14px 45px #0007;
+}
+
+.paper:before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1px solid #A8744355;
+  pointer-events: none;
+}
+
+.paper h2 {
+  color: var(--brown);
+}
+
+.paper p {
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.paper .kicker {
+  color: #8b623e;
+}
+
+.divider {
+  width: 80px;
+  height: 1px;
+  margin: 17px auto;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--copper),
+    transparent
+  );
+}
+
+.note {
+  border-left: 1px solid var(--copper);
+  padding: 15px 18px;
+  margin: 18px 0;
+  background: #ffffff09;
+  color: #f0ddc7;
+  font: 24px/1.6 "Cormorant Garamond", serif;
+}
+
+.oldwords, .newwords {
+  font: clamp(29px, 6vw, 43px)/1.35 "Cormorant Garamond", serif;
+  text-align: center;
+  color: var(--gold);
+}
+
+.oldwords {
+  min-height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity .7s, filter .7s, transform .7s;
+}
+
+.oldwords.dissolve {
+  opacity: 0;
+  filter: blur(15px);
+  transform: scale(1.2);
+}
+
+.newwords {
+  animation: reveal 1.1s ease both;
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    filter: blur(15px);
+    transform: scale(.9);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1);
+  }
+}
+
+input {
+  width: 100%;
+  padding: 16px;
+  text-align: center;
+  background: var(--paper);
+  color: var(--brown);
+  border: 1px solid var(--copper);
+  border-radius: 12px;
+  font-size: 17px;
+}
+
+.mantra {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font: clamp(20px, 3.5vw, 26px)/1.24 "Cormorant Garamond", serif;
+}
+
+.mantra-line {
+  display: block;
+  opacity: 0;
+  transform: translateY(8px);
+  animation: lineIn .5s ease forwards;
+}
+
+.mantra-line.first {
+  font-weight: 600;
+  color: #81532f;
+  font-size: 1.16em;
+  margin-bottom: 7px;
+}
+
+.mantra-line.last {
+  font-weight: 600;
+  color: #81532f;
+  margin-top: 5px;
+}
+
+@keyframes lineIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.action {
+  padding: 20px;
+  border: 1px solid #A8744377;
+  border-radius: 18px;
+  background: #ffffff0a;
+  margin: 20px 0;
+  text-align: center;
+}
+
+.action p {
+  line-height: 1.65;
+  margin: 0;
+}
+
+.footer {
+  text-align: center;
+  color: #aa8a70;
+  font-size: 10px;
+  letter-spacing: 1px;
+  margin-top: 25px;
+}
+
+.result-layout {
+  display: grid;
+  gap: 22px;
+}
+
+.result-after {
+  min-width: 0;
+}
+
+#feedback {
+  min-height: 18px;
+}
+
+/* ACCUEIL ANIMÉ */
+
+.intro-stage {
+  position: relative;
+  height: clamp(250px, 45vh, 380px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  isolation: isolate;
+}
+
+.intro-halo {
+  position: absolute;
+  width: 245px;
+  height: 245px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    #D9B47E55,
+    transparent 70%
+  );
+  filter: blur(14px);
+  animation: halo 4s ease-in-out infinite;
+}
+
+@keyframes halo {
+  50% {
+    transform: scale(1.25);
+    opacity: .6;
+  }
+}
+
+.seal {
+  width: clamp(145px, 34vw, 225px);
+  aspect-ratio: 1;
+  position: relative;
+  z-index: 2;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 0 55px #A8744366;
+  animation:
+    sealIn 1.4s cubic-bezier(.2,.8,.2,1) both,
+    sealFloat 5s ease-in-out 1.4s infinite;
+}
+
+.seal img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.seal-fallback {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  border: 3px double var(--gold);
+  border-radius: 50%;
+  background: radial-gradient(circle, #72452d, #2d1b13);
+  color: var(--gold);
+  font: 64px "Cormorant Garamond", serif;
+}
+
+@keyframes sealIn {
+  from {
+    opacity: 0;
+    transform: scale(.45) rotate(-20deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+
+@keyframes sealFloat {
+  50% {
+    transform: translateY(-9px);
+  }
+}
+
+.orbit {
+  position: absolute;
+  width: 270px;
+  height: 270px;
+  border: 1px solid #D9B47E55;
+  border-radius: 50%;
+  animation: rotate 30s linear infinite;
+}
+
+.orbit.two {
+  width: 315px;
+  height: 315px;
+  border-style: dashed;
+  opacity: .45;
+  animation-direction: reverse;
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.thought {
+  position: absolute;
+  z-index: 3;
+  font: italic clamp(15px, 3vw, 21px) "Cormorant Garamond", serif;
+  color: #F0D3AA;
+  text-shadow: 0 0 20px #000;
+  animation: thoughtFloat 5s ease-in-out infinite alternate;
+}
+
+.thought.t1 {
+  top: 6%;
+  left: 0;
+}
+
+.thought.t2 {
+  top: 15%;
+  right: 0;
+  animation-delay: -2s;
+}
+
+.thought.t3 {
+  bottom: 12%;
+  left: 0;
+  animation-delay: -3s;
+}
+
+.thought.t4 {
+  bottom: 6%;
+  right: 0;
+  animation-delay: -1s;
+}
+
+@keyframes thoughtFloat {
+  to {
+    transform: translateY(-16px);
+    opacity: .48;
+  }
+}
+
+.intro-title {
+  animation: appear 1s .3s both;
+}
+
+.intro-copy {
+  max-width: 510px;
+}
+
+.intro-button {
+  position: relative;
+  overflow: hidden;
+  animation: appear 1s .6s both;
+}
+
+.intro-button:after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -80%;
+  width: 40%;
+  height: 200%;
+  background: #ffffff77;
+  transform: rotate(25deg);
+  animation: shine 4s 1.5s infinite;
+}
+
+@keyframes shine {
+  0%, 65% {
+    left: -80%;
+  }
+  100% {
+    left: 150%;
+  }
+}
+
+.intro-exit .seal {
+  animation: sealOpen .85s ease-in forwards;
+}
+
+.intro-exit .thought {
+  animation: vanish .6s ease forwards;
+}
+
+@keyframes sealOpen {
+  45% {
+    transform: scale(1.15);
+    filter: brightness(1.8);
+  }
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+    filter: blur(20px);
+  }
+}
+
+@keyframes vanish {
+  to {
+    opacity: 0;
+    filter: blur(10px);
+  }
+}
+
+@media (min-width: 1000px) {
+  .app.long {
+    width: min(100%, 1050px);
+  }
+
+  .result-layout {
+    grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+    align-items: start;
+    gap: 35px;
+  }
+
+  .result-layout .paper {
+    position: sticky;
+    top: 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .app {
+    padding: 17px 16px 28px;
+  }
+
+  .brand {
+    font-size: 9px;
+    margin-bottom: 16px;
+  }
+
+  .paper {
+    padding: 22px 16px;
+  }
+
+  .paper:before {
+    inset: 6px;
+  }
+
+  .mantra {
+    font-size: 21px;
+    gap: 3px;
+    line-height: 1.2;
+  }
+
+  .choice {
+    padding: 14px;
+  }
+
+  .divider {
+    margin: 14px auto;
+  }
+
+  .intro-stage {
+    height: 265px;
+  }
+
+  .orbit {
+    width: 215px;
+    height: 215px;
+  }
+
+  .orbit.two {
+    width: 255px;
+    height: 255px;
+  }
+
+  .seal {
+    width: 165px;
+  }
+
+  .thought {
+    font-size: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *:before, *:after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
 }
 </style>
 </head>
+
 <body>
+
 <div id="ambient" aria-hidden="true">
- <div class="glow a"></div><div class="glow b"></div>
+  <div class="glow a"></div>
+  <div class="glow b"></div>
 </div>
+
 <div id="particles" aria-hidden="true"></div>
+
 <main class="app" id="app">
- <div class="brand">Les soins de lumière d'Aurore</div>
- <div id="progress" class="progress"></div>
- <section id="screen" class="screen" aria-live="polite"></section>
- <footer class="footer">✦ UN PETIT MOMENT RIEN QUE POUR TOI ✦</footer>
+  <div class="brand">Les soins de lumière d'Aurore</div>
+  <div id="progress" class="progress"></div>
+  <section id="screen" class="screen" aria-live="polite"></section>
+  <footer class="footer">
+    ✦ UN PETIT MOMENT RIEN QUE POUR TOI ✦
+  </footer>
 </main>
+
 <script>
 "use strict";
-const screen=document.getElementById("screen");
-const progress=document.getElementById("progress");
-const particles=document.getElementById("particles");
-const app=document.getElementById("app");
-const reduced=window.matchMedia("(prefers-reduced-motion: reduce)");
 
-let step=0,answers=[],chosen=0,firstName="";
-let profile="place",busy=false;
+const screen = document.getElementById("screen");
+const progress = document.getElementById("progress");
+const particles = document.getElementById("particles");
+const app = document.getElementById("app");
+const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-const keys=["place","regard","choix","intuition","merite"];
-const data={
- place:{
-  title:"Tu doutes de ce que tu es capable de faire",
-  old:"Je ne suis pas capable.",
-  text:"Tu sais ce que je remarque ? Tu as peut-être tendance à te demander si tu vas y arriver avant même d'avoir essayé. Et pendant ce temps-là, il y a des choses qui te tiennent à cœur et que tu repousses.",
-  affirm:"Je peux avancer, même quand je doute.",
-  action:"Choisis une chose que tu repousses depuis un moment. Et aujourd'hui, fais juste le premier petit pas. Même minuscule.",
-  more:["J'ai le droit d'apprendre en avançant.","Je peux prendre ma place à mon rythme."]
- },
- regard:{
-  title:"Le regard des autres prend beaucoup de place",
-  old:"Qu'est-ce qu'ils vont penser de moi ?",
-  text:"Tu connais ce moment où tu sais ce que tu voudrais faire, mais tu imagines déjà ce que les autres vont en penser ? À force, on peut finir par oublier ce qu'on voulait vraiment, nous.",
-  affirm:"Je peux être moi, même si ça ne plaît pas à tout le monde.",
-  action:"Aujourd'hui, fais un petit choix juste pour toi. Sans demander trois avis avant.",
-  more:["Mon avis compte aussi.","J'ai le droit d'avoir mes propres envies."]
- },
- choix:{
-  title:"Tu as tendance à t'oublier",
-  old:"Les autres passent avant moi.",
-  text:"J'ai l'impression que tu sais très bien être là pour les autres. Mais quand il s'agit de toi, c'est une autre histoire. Et si tes besoins avaient le droit de compter autant que les leurs ?",
-  affirm:"J'ai le droit de me choisir sans culpabiliser.",
-  action:"Aujourd'hui, accorde-toi quinze minutes pour quelque chose qui te fait vraiment plaisir. Sans te justifier.",
-  more:["Mes besoins comptent aussi.","Je peux dire non quand j'en ai besoin."]
- },
- intuition:{
-  title:"Tu remets souvent tes choix en question",
-  old:"Et si je me trompais ?",
-  text:"Tu sais, parfois on ressent quelque chose, on a une envie, une idée… Et puis le cerveau arrive avec ses mille questions. Résultat, on tourne en rond. Ça te parle ?",
-  affirm:"J'apprends à faire confiance à mes choix.",
-  action:"Aujourd'hui, prends une petite décision sans la retourner dix fois dans ta tête.",
-  more:["J'écoute davantage ce que je ressens.","Je peux avancer sans avoir toutes les réponses."]
- },
- merite:{
-  title:"Tu as du mal à reconnaître ta propre valeur",
-  old:"Je ne mérite peut-être pas tout ça.",
-  text:"Tu as peut-être cette habitude de minimiser ce que tu fais, ce que tu réussis, ou même ce dont tu rêves. Comme s'il fallait toujours en faire encore plus. Et si tu pouvais déjà reconnaître tout ce que tu es ?",
-  affirm:"Je mérite aussi de belles choses.",
-  action:"Aujourd'hui, note trois choses dont tu peux être fière. Même les toutes petites.",
-  more:["Ma valeur ne dépend pas de mes réussites.","Je peux accueillir ce qui me fait du bien."]
- }
+let step = 0;
+let answers = [];
+let chosen = 0;
+let firstName = "";
+let profile = "place";
+let busy = false;
+
+const keys = ["place", "regard", "choix", "intuition", "merite"];
+
+const data = {
+  place: {
+    title: "Tu doutes de ce que tu es capable de faire",
+    old: "Je ne suis pas capable.",
+    text: "Tu sais ce que je remarque ? Tu as peut-être tendance à te demander si tu vas y arriver avant même d'avoir essayé. Et pendant ce temps-là, il y a des choses qui te tiennent à cœur et que tu repousses.",
+    affirm: "Je peux avancer, même quand je doute.",
+    action: "Choisis une chose que tu repousses depuis un moment. Et aujourd'hui, fais juste le premier petit pas. Même minuscule.",
+    more: [
+      "J'ai le droit d'apprendre en avançant.",
+      "Je peux prendre ma place à mon rythme."
+    ]
+  },
+
+  regard: {
+    title: "Le regard des autres prend beaucoup de place",
+    old: "Qu'est-ce qu'ils vont penser de moi ?",
+    text: "Tu connais ce moment où tu sais ce que tu voudrais faire, mais tu imagines déjà ce que les autres vont en penser ? À force, on peut finir par oublier ce qu'on voulait vraiment, nous.",
+    affirm: "Je peux être moi, même si ça ne plaît pas à tout le monde.",
+    action: "Aujourd'hui, fais un petit choix juste pour toi. Sans demander trois avis avant.",
+    more: [
+      "Mon avis compte aussi.",
+      "J'ai le droit d'avoir mes propres envies."
+    ]
+  },
+
+  choix: {
+    title: "Tu as tendance à t'oublier",
+    old: "Les autres passent avant moi.",
+    text: "J'ai l'impression que tu sais très bien être là pour les autres. Mais quand il s'agit de toi, c'est une autre histoire. Et si tes besoins avaient le droit de compter autant que les leurs ?",
+    affirm: "J'ai le droit de me choisir sans culpabiliser.",
+    action: "Aujourd'hui, accorde-toi quinze minutes pour quelque chose qui te fait vraiment plaisir. Sans te justifier.",
+    more: [
+      "Mes besoins comptent aussi.",
+      "Je peux dire non quand j'en ai besoin."
+    ]
+  },
+
+  intuition: {
+    title: "Tu remets souvent tes choix en question",
+    old: "Et si je me trompais ?",
+    text: "Tu sais, parfois on ressent quelque chose, on a une envie, une idée… Et puis le cerveau arrive avec ses mille questions. Résultat, on tourne en rond. Ça te parle ?",
+    affirm: "J'apprends à faire confiance à mes choix.",
+    action: "Aujourd'hui, prends une petite décision sans la retourner dix fois dans ta tête.",
+    more: [
+      "J'écoute davantage ce que je ressens.",
+      "Je peux avancer sans avoir toutes les réponses."
+    ]
+  },
+
+  merite: {
+    title: "Tu as du mal à reconnaître ta propre valeur",
+    old: "Je ne mérite peut-être pas tout ça.",
+    text: "Tu as peut-être cette habitude de minimiser ce que tu fais, ce que tu réussis, ou même ce dont tu rêves. Comme s'il fallait toujours en faire encore plus. Et si tu pouvais déjà reconnaître tout ce que tu es ?",
+    affirm: "Je mérite aussi de belles choses.",
+    action: "Aujourd'hui, note trois choses dont tu peux être fière. Même les toutes petites.",
+    more: [
+      "Ma valeur ne dépend pas de mes réussites.",
+      "Je peux accueillir ce qui me fait du bien."
+    ]
+  }
 };
-const questions=[
- {
-  heading:"On commence par là",
-  intro:"Dis-moi… quand tu aimerais changer quelque chose dans ta vie, qu'est-ce qui te freine le plus souvent ?",
-  options:[
-   ["J'ai peur de ne pas être capable d'y arriver.","place"],
-   ["Je pense beaucoup à ce que les autres vont en dire.","regard"],
-   ["Je finis toujours par faire passer les autres avant moi.","choix"],
-   ["Je doute tellement de mes choix que je reste bloquée.","intuition"],
-   ["Au fond, j'ai du mal à croire que je mérite mieux.","merite"]
-  ]
- },
- {
-  heading:"Et dans la vraie vie ?",
-  intro:"Quand cette peur ou ce doute prend le dessus, qu'est-ce que tu as tendance à faire ?",
-  options:[
-   ["Je repousse les choses, même celles qui me tiennent à cœur.","place"],
-   ["Je cherche à être rassurée ou à avoir l'avis des autres.","regard"],
-   ["Je dis oui alors qu'au fond, j'aimerais dire non.","choix"],
-   ["Je réfléchis tellement que je finis par ne rien décider.","intuition"],
-   ["Je minimise mes envies ou mes réussites.","merite"]
-  ]
- },
- {
-  heading:"Et si ça changeait ?",
-  intro:"Si tu pouvais te libérer un peu de ce qui te freine aujourd'hui, qu'aimerais-tu réussir à faire ?",
-  options:[
-   ["Oser me lancer, même sans être certaine de réussir.","place"],
-   ["Être moi-même sans avoir constamment peur du jugement.","regard"],
-   ["Me choisir sans culpabiliser.","choix"],
-   ["Faire davantage confiance à mes choix et à mes ressentis.","intuition"],
-   ["Me sentir digne de recevoir de belles choses.","merite"]
-  ]
- }
+
+const questions = [
+  {
+    heading: "On commence par là",
+    intro: "Dis-moi… quand tu aimerais changer quelque chose dans ta vie, qu'est-ce qui te freine le plus souvent ?",
+    options: [
+      ["J'ai peur de ne pas être capable d'y arriver.", "place"],
+      ["Je pense beaucoup à ce que les autres vont en dire.", "regard"],
+      ["Je finis toujours par faire passer les autres avant moi.", "choix"],
+      ["Je doute tellement de mes choix que je reste bloquée.", "intuition"],
+      ["Au fond, j'ai du mal à croire que je mérite mieux.", "merite"]
+    ]
+  },
+
+  {
+    heading: "Et dans la vraie vie ?",
+    intro: "Quand cette peur ou ce doute prend le dessus, qu'est-ce que tu as tendance à faire ?",
+    options: [
+      ["Je repousse les choses, même celles qui me tiennent à cœur.", "place"],
+      ["Je cherche à être rassurée ou à avoir l'avis des autres.", "regard"],
+      ["Je dis oui alors qu'au fond, j'aimerais dire non.", "choix"],
+      ["Je réfléchis tellement que je finis par ne rien décider.", "intuition"],
+      ["Je minimise mes envies ou mes réussites.", "merite"]
+    ]
+  },
+
+  {
+    heading: "Et si ça changeait ?",
+    intro: "Si tu pouvais te libérer un peu de ce qui te freine aujourd'hui, qu'aimerais-tu réussir à faire ?",
+    options: [
+      ["Oser me lancer, même sans être certaine de réussir.", "place"],
+      ["Être moi-même sans avoir constamment peur du jugement.", "regard"],
+      ["Me choisir sans culpabiliser.", "choix"],
+      ["Faire davantage confiance à mes choix et à mes ressentis.", "intuition"],
+      ["Me sentir digne de recevoir de belles choses.", "merite"]
+    ]
+  }
 ];
 
-function esc(s){
- return String(s).replace(/[&<>"']/g,c=>({
-  "&":"&amp;","<":"&lt;",">":"&gt;",
-  '"':"&quot;","'":"&#39;"
- })[c]);
-}
-function render(html,isLong=false){
- app.classList.toggle("long",isLong);
- screen.classList.remove("screen");
- screen.innerHTML=html;
- void screen.offsetWidth;
- screen.classList.add("screen");
- window.scrollTo(0,0);
-}
-function setProgress(n){
- progress.innerHTML="";
- if(!n)return;
- for(let i=0;i<5;i++){
-  const s=document.createElement("span");
-  if(i<n)s.className="on";
-  progress.appendChild(s);
- }
-}
-function sparks(x,y,count=30){
- if(reduced.matches)return;
- for(let i=0;i<count;i++){
-  const p=document.createElement("span");
-  p.className="particle";
-  const angle=Math.random()*Math.PI*2;
-  const distance=35+Math.random()*150;
-  p.style.left=x+"px";p.style.top=y+"px";
-  p.style.setProperty("--x",Math.cos(angle)*distance+"px");
-  p.style.setProperty("--y",Math.sin(angle)*distance+"px");
-  particles.appendChild(p);
-  p.addEventListener("animationend",()=>p.remove(),{once:true});
- }
-}
-function centerSparks(){sparks(innerWidth/2,innerHeight/2,55)}
-
-function welcome(){
- setProgress(0);
- render(`
-  <div class="intro-stage" id="introStage">
-   <div class="intro-halo"></div>
-   <div class="orbit"></div>
-   <div class="orbit two"></div>
-   <span class="thought t1">Je doute...</span>
-   <span class="thought t2">Et si je me trompais ?</span>
-   <span class="thought t3">Je devrais...</span>
-   <span class="thought t4">Je n'ose pas...</span>
-   <div class="seal">
-    <img src="logo.jpg" alt="Logo Les soins de lumière d'Aurore"
-     onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
-    <div class="seal-fallback" style="display:none">✧</div>
-   </div>
-  </div>
-  <div class="intro-title">
-   <div class="kicker">Une expérience signée Aurore</div>
-   <h1>Les mots que<br><span class="script">je me raconte</span></h1>
-  </div>
-  <p class="lead intro-copy">
-   Tu sais, cette petite voix dans ta tête
-   qui a toujours quelque chose à dire ?
-   <br><br>
-   Celle qui te fait douter alors qu'il y a
-   deux minutes, tu étais super motivée ?
-   <br><br>
-   Eh bien, aujourd'hui, on va lui prêter
-   un peu attention.
-   <br><br>
-   Allez, viens. J'ai trois petites questions pour toi. ❤️
-  </p>
-  <button class="primary intro-button" onclick="openExperience()">
-   Viens, on va voir ça ensemble ✦
-  </button>
-  <p class="muted">Quelques minutes, tranquillement.</p>
- `);
-}
-function openExperience(){
- if(busy)return;
- busy=true;
- const stage=document.getElementById("introStage");
- const button=document.querySelector(".intro-button");
- if(button)button.disabled=true;
- if(stage)stage.classList.add("intro-exit");
- centerSparks();
- setTimeout(()=>{
-  busy=false;start();
- },reduced.matches?50:850);
-}
-function start(){
- step=0;answers=[];chosen=0;firstName="";
- busy=false;question();
-}
-function question(){
- setProgress(step+1);
- const q=questions[step];
- let html=`
-  <div class="kicker">0${step+1} / 03</div>
-  <div class="symbol">✧</div>
-  <h2>${q.heading}</h2>
-  <p class="lead">${q.intro}</p>
-  <div class="choices">`;
- q.options.forEach((o,i)=>{
-  html+=`<button class="choice" onclick="answer(${i},this)">
-   <span class="star">✦</span>${esc(o[0])}</button>`;
- });
- html+=`</div><p class="muted">
-  Choisis ce qui te ressemble le plus aujourd'hui.</p>`;
- render(html);
-}
-function answer(i,button){
- if(busy)return;
- busy=true;button.classList.add("selected");
- const r=button.getBoundingClientRect();
- sparks(r.left+r.width/2,r.top+r.height/2,16);
- answers.push(questions[step].options[i][1]);
- step++;
- setTimeout(()=>{
-  busy=false;
-  if(step<3)transition();
-  else finalTransition();
- },350);
-}
-function transition(){
- const messages=[
-  "Tu vois… parfois, on a tellement l'habitude de penser comme ça qu'on ne s'en rend même plus compte.",
-  "Et maintenant, j'aimerais te poser une dernière petite question."
- ];
- render(`
-  <div class="symbol">✦</div>
-  <h2>Attends, juste<br><span class="script">une seconde...</span></h2>
-  <div class="note">${messages[step-1]}</div>
-  <button class="primary" onclick="question()">On continue ✦</button>
- `);
-}
-function finalTransition(){
- setProgress(3);
- render(`
-  <div class="symbol">✧</div>
-  <h2>Tu sais quoi ?<br><span class="script">C'est intéressant...</span></h2>
-  <p class="lead">
-   En trois petites questions, tu viens déjà
-   de mettre des mots sur certaines choses.
-   <br><br>
-   Et parfois, rien que ça, ça fait du bien.
-   <br><br>
-   Maintenant, j'aimerais te montrer ce qui ressort de tes réponses.
-  </p>
-  <button class="primary" onclick="reveal()">Je veux voir ✦</button>
- `);
-}
-function determine(){
- const scores={};
- keys.forEach(k=>scores[k]=0);
- answers.forEach(k=>scores[k]++);
- profile=answers[0];
- keys.forEach(k=>{
-  if(scores[k]>scores[profile])profile=k;
- });
-}
-function reveal(){
- determine();setProgress(4);
- const p=data[profile];
- render(`
-  <div class="kicker">Ce que tes réponses racontent</div>
-  <div class="paper">
-   <h2>${p.title}</h2>
-   <div class="divider"></div>
-   <p>${p.text}</p>
-  </div>
-  <p class="muted" style="margin-top:20px">
-   Ce n'est pas une étiquette ni une vérité absolue.
-   Juste une piste pour regarder les choses autrement.
-  </p>
-  <button class="primary" onclick="transform()">
-   Et si on changeait ces mots ? ✦
-  </button>
- `);
-}
-function transform(){
- const p=data[profile];
- render(`
-  <div class="kicker">Les mots peuvent changer</div>
-  <h2>Cette petite phrase<br><span class="script">dans ta tête...</span></h2>
-  <div id="old" class="oldwords">« ${p.old} »</div>
-  <p class="muted">Et si tu essayais de te dire autre chose ?</p>
-  <button id="transformButton" class="primary" onclick="doTransform()">
-   Transformer ces mots ✦
-  </button>
- `);
-}
-function doTransform(){
- const old=document.getElementById("old");
- const btn=document.getElementById("transformButton");
- if(!old||!btn)return;
- btn.disabled=true;old.classList.add("dissolve");
- centerSparks();
- setTimeout(()=>{
-  old.outerHTML=`<div class="newwords">
-   « ${data[profile].affirm} »</div>`;
-  btn.outerHTML=`
-   <p class="lead" style="margin-top:22px">
-    Tu n'es pas obligée d'y croire à 100 % tout de suite.
-    <br>Mais tu peux commencer à laisser un peu de place à cette idée.
-   </p>
-   <button class="primary" onclick="chooseWords()">
-    Je veux mon mantra ✦
-   </button>`;
- },reduced.matches?50:750);
-}
-function affirmations(){
- const result=[];
- answers.forEach(k=>{
-  const a=data[k].affirm;
-  if(!result.includes(a))result.push(a);
- });
- for(const extra of data[profile].more){
-  if(result.length>=3)break;
-  if(!result.includes(extra))result.push(extra);
- }
- return result.slice(0,3);
-}
-function chooseWords(){
- const list=affirmations();
- let html=`
-  <div class="kicker">Des mots rien que pour toi</div>
-  <h2>Qu'est-ce que tu aimerais<br>
-   <span class="script">te dire aujourd'hui ?</span></h2>
-  <p class="lead">
-   J'ai préparé quelques phrases à partir de tes réponses.
-   <br>Choisis celle qui te parle le plus.
-  </p>
-  <div class="choices">`;
- list.forEach((a,i)=>{
-  html+=`<button class="choice" onclick="selectAffirm(${i})">
-   <span class="star">✧</span>${esc(a)}</button>`;
- });
- html+="</div>";
- render(html);
-}
-function selectAffirm(i){
- chosen=i;setProgress(5);
- render(`
-  <div class="symbol">✦</div>
-  <h2>Encore une toute<br><span class="script">petite chose...</span></h2>
-  <p class="lead">
-   J'aimerais que ce mantra soit vraiment le tien.
-   Alors dis-moi, comment tu t'appelles ?
-  </p>
-  <label class="kicker" for="firstname"
-   style="display:block">TON PRÉNOM</label>
-  <input id="firstname" maxlength="35"
-   autocomplete="given-name" placeholder="Écris ton prénom ici">
-  <button class="primary" onclick="makeMantra()">
-   Découvrir mon mantra ✦
-  </button>
- `);
-}
-function mantraLines(){
- const list=affirmations();
- const selected=list[chosen];
- const others=list.filter((_,i)=>i!==chosen);
- const lines=[
-  "Moi, "+(firstName||"moi")+",",
-  selected,...others,
-  "Je m'autorise à avancer à mon rythme.",
-  "Je fais de la place à ce qui me fait du bien.",
-  "J'apprends à m'écouter davantage.",
-  "Mes envies comptent aussi.",
-  "Je mérite une vie qui me ressemble.",
-  "Je me choisis.",
-  "Je suis à ma place.",
-  "Je suis moi."
- ];
- return [...new Set(lines)];
-}
-function makeMantra(){
- const el=document.getElementById("firstname");
- firstName=(el?el.value:"").trim().slice(0,35);
- centerSparks();showMantra();
-}
-function showMantra(){
- const lines=mantraLines();
- const p=data[profile];
- let lineHtml="";
- lines.forEach((line,i)=>{
-  const cls=i===0?"first":i===lines.length-1?"last":"";
-  lineHtml+=`<span class="mantra-line ${cls}"
-   style="animation-delay:${i*.1}s">${esc(line)}</span>`;
- });
- render(`
-  <div class="kicker">Ton nouveau chapitre</div>
-  <div class="result-layout">
-   <div class="paper" id="mantraCard">
-    <div class="kicker">Les mots que je choisis</div>
-    <h2>Mon mantra personnel</h2>
-    <div class="divider"></div>
-    <div class="mantra">${lineHtml}</div>
-    <div class="divider"></div>
-    <p style="font-size:11px;margin:0">
-     Les soins de lumière d'Aurore
-    </p>
-   </div>
-   <div class="result-after">
-    <p class="lead" style="margin-top:15px">
-     Garde ces mots quelque part.
-     <br><br>
-     Et les jours où tu recommences à douter de toi,
-     reviens les lire.
-     <br><br>
-     Parfois, on a juste besoin de se rappeler
-     qu'on a le droit de prendre sa place. ❤️
-    </p>
-    <button class="primary" onclick="copyCard()">
-     Copier ma carte ✦
-    </button>
-    <button class="secondary" onclick="saveCard()">
-     Enregistrer ma carte
-    </button>
-    <button class="secondary" onclick="shareCard()">
-     Partager ma carte
-    </button>
-    <button class="secondary" onclick="copyMantra()">
-     Copier uniquement le texte
-    </button>
-    <p id="feedback" class="muted" role="status"></p>
-    <div class="action">
-     <div class="kicker">Et maintenant, dans la vraie vie ?</div>
-     <h3>Ton petit défi du jour</h3>
-     <p>${p.action}</p>
-    </div>
-    <div class="divider"></div>
-    <h2>Et si tu avais envie<br>
-     <span class="script">d'aller plus loin ?</span></h2>
-    <p class="lead">
-     Tu sais, certaines pensées, on les traîne
-     depuis tellement longtemps qu'on ne sait
-     même plus d'où elles viennent.
-     <br><br>
-     Et parfois, même quand on a compris
-     qu'elles nous freinent, elles continuent de revenir.
-     <br><br>
-     C'est aussi sur ces croyances que je travaille
-     pendant mes séances d'Alchimie Cellulaire.
-     <br><br>
-     Alors si tu sens que tu as envie d'explorer
-     tout ça plus profondément, je te laisse
-     découvrir tranquillement. ❤️
-    </p>
-    <a class="primary"
-     href="https://www.lessoinsdelumieredaurore.com/service-page/alchimie-cellulaire"
-     target="_blank" rel="noopener noreferrer">
-     Découvrir Alchimie Cellulaire ✦
-    </a>
-    <button class="secondary" onclick="welcome()">
-     Recommencer l'expérience
-    </button>
-   </div>
-  </div>
- `,true);
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, c => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
+  })[c]);
 }
 
-/* CARTE IMAGE : FORMAT ADAPTÉ AU PARTAGE */
-function createCardCanvas(){
- const canvas=document.createElement("canvas");
- canvas.width=1080;canvas.height=1600;
- const ctx=canvas.getContext("2d");
- if(!ctx)throw new Error("Canvas indisponible");
+function render(html, isLong = false) {
+  app.classList.toggle("long", isLong);
+  screen.classList.remove("screen");
+  screen.innerHTML = html;
+  void screen.offsetWidth;
+  screen.classList.add("screen");
+  window.scrollTo(0, 0);
+}
 
- const bg=ctx.createLinearGradient(0,0,1080,1600);
- bg.addColorStop(0,"#FFF9EF");
- bg.addColorStop(1,"#E8D5BB");
- ctx.fillStyle=bg;ctx.fillRect(0,0,1080,1600);
+function setProgress(n) {
+  progress.innerHTML = "";
+  if (!n) return;
 
- ctx.strokeStyle="#A87443";
- ctx.lineWidth=3;ctx.strokeRect(45,45,990,1510);
- ctx.lineWidth=1;ctx.strokeRect(60,60,960,1480);
-
- ctx.textAlign="center";
- ctx.fillStyle="#A87443";
- ctx.font="50px Georgia";
- ctx.fillText("✦",540,150);
- ctx.fillStyle="#4A3022";
- ctx.font="60px Georgia";
- ctx.fillText("Mon mantra personnel",540,240);
-
- ctx.beginPath();
- ctx.strokeStyle="#A87443";
- ctx.moveTo(390,290);ctx.lineTo(690,290);ctx.stroke();
-
- const lines=mantraLines();
- let fontSize=39;
- let wrapped=[];
- let lineHeight=60;
-
- function wrap(){
-  wrapped=[];
-  ctx.font=fontSize+"px Georgia";
-  for(const line of lines){
-   const words=line.split(" ");
-   let current="";
-   for(const word of words){
-    const trial=current?current+" "+word:word;
-    if(ctx.measureText(trial).width>850&&current){
-     wrapped.push(current);current=word;
-    }else current=trial;
-   }
-   if(current)wrapped.push(current);
+  for (let i = 0; i < 5; i++) {
+    const s = document.createElement("span");
+    if (i < n) s.className = "on";
+    progress.appendChild(s);
   }
- }
-
- wrap();
- while(wrapped.length*lineHeight>1050&&fontSize>24){
-  fontSize-=2;lineHeight-=2;wrap();
- }
-
- ctx.fillStyle="#4A3022";
- ctx.font=fontSize+"px Georgia";
- const total=wrapped.length*lineHeight;
- let y=340+(1050-total)/2+lineHeight/2;
-
- for(const line of wrapped){
-  ctx.fillText(line,540,y);
-  y+=lineHeight;
- }
-
- ctx.strokeStyle="#A87443";
- ctx.beginPath();
- ctx.moveTo(390,1450);ctx.lineTo(690,1450);ctx.stroke();
- ctx.font="25px Georgia";
- ctx.fillStyle="#8B623E";
- ctx.fillText("Les soins de lumière d'Aurore",540,1500);
- return canvas;
 }
-function cardBlob(){
- return new Promise((resolve,reject)=>{
-  try{
-   createCardCanvas().toBlob(blob=>{
-    blob?resolve(blob):reject(new Error("Image indisponible"));
-   },"image/png");
-  }catch(e){reject(e)}
- });
-}
-function feedback(message){
- const el=document.getElementById("feedback");
- if(el)el.textContent=message;
-}
-function downloadBlob(blob){
- const url=URL.createObjectURL(blob);
- const a=document.createElement("a");
- a.href=url;a.download="mon-mantra-aurore.png";
- document.body.appendChild(a);a.click();a.remove();
- setTimeout(()=>URL.revokeObjectURL(url),3000);
-}
-async function saveCard(){
- try{
-  const blob=await cardBlob();
-  downloadBlob(blob);
-  feedback("Ta carte est prête dans tes téléchargements ❤️");
- }catch(e){
-  feedback("Impossible de créer la carte sur ce navigateur.");
- }
-}
-async function copyCard(){
- try{
-  if(!navigator.clipboard||!window.ClipboardItem)
-   throw new Error("Copie image indisponible");
 
-  /* Lancement de la copie directement après le clic,
-     important pour les navigateurs Apple. */
-  const item=new ClipboardItem({
-   "image/png":cardBlob()
+function sparks(x, y, count = 30) {
+  if (reduced.matches) return;
+
+  for (let i = 0; i < count; i++) {
+    const p = document.createElement("span");
+    p.className = "particle";
+
+    const angle = Math.random() * Math.PI * 2;
+    const distance = 35 + Math.random() * 150;
+
+    p.style.left = x + "px";
+    p.style.top = y + "px";
+    p.style.setProperty("--x", Math.cos(angle) * distance + "px");
+    p.style.setProperty("--y", Math.sin(angle) * distance + "px");
+
+    particles.appendChild(p);
+    p.addEventListener("animationend", () => p.remove(), {once: true});
+  }
+}
+
+function centerSparks() {
+  sparks(innerWidth / 2, innerHeight / 2, 55);
+}
+
+function welcome() {
+  setProgress(0);
+
+  render(`
+    <div class="intro-stage" id="introStage">
+      <div class="intro-halo"></div>
+      <div class="orbit"></div>
+      <div class="orbit two"></div>
+
+      <span class="thought t1">Je doute...</span>
+      <span class="thought t2">Et si je me trompais ?</span>
+      <span class="thought t3">Je devrais...</span>
+      <span class="thought t4">Je n'ose pas...</span>
+
+      <div class="seal">
+        <img
+          src="logo.jpg.PNG"
+          alt="Logo Les soins de lumière d'Aurore"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"
+        >
+        <div class="seal-fallback" style="display:none">✧</div>
+      </div>
+    </div>
+
+    <div class="intro-title">
+      <div class="kicker">Une expérience signée Aurore</div>
+
+      <h1>
+        Les mots que<br>
+        <span class="script">je me raconte</span>
+      </h1>
+    </div>
+
+    <p class="lead intro-copy">
+      Tu sais, cette petite voix dans ta tête
+      qui a toujours quelque chose à dire ?
+      <br><br>
+      Celle qui te fait douter alors qu'il y a
+      deux minutes, tu étais super motivée ?
+      <br><br>
+      Eh bien, aujourd'hui, on va lui prêter
+      un peu attention.
+      <br><br>
+      Allez, viens. J'ai trois petites questions pour toi. ❤️
+    </p>
+
+    <button class="primary intro-button" onclick="openExperience()">
+      Viens, on va voir ça ensemble ✦
+    </button>
+
+    <p class="muted">
+      Quelques minutes, tranquillement.
+    </p>
+  `);
+}
+
+function openExperience() {
+  if (busy) return;
+  busy = true;
+
+  const stage = document.getElementById("introStage");
+  const button = document.querySelector(".intro-button");
+
+  if (button) button.disabled = true;
+  if (stage) stage.classList.add("intro-exit");
+
+  centerSparks();
+
+  setTimeout(() => {
+    busy = false;
+    start();
+  }, reduced.matches ? 50 : 850);
+}
+
+function start() {
+  step = 0;
+  answers = [];
+  chosen = 0;
+  firstName = "";
+  busy = false;
+  question();
+}
+
+function question() {
+  setProgress(step + 1);
+  const q = questions[step];
+
+  let html = `
+    <div class="kicker">0${step + 1} / 03</div>
+    <div class="symbol">✧</div>
+    <h2>${q.heading}</h2>
+    <p class="lead">${q.intro}</p>
+    <div class="choices">
+  `;
+
+  q.options.forEach((o, i) => {
+    html += `
+      <button class="choice" onclick="answer(${i},this)">
+        <span class="star">✦</span>${esc(o[0])}
+      </button>
+    `;
   });
-  await navigator.clipboard.write([item]);
-  feedback("Ta carte est copiée ! Tu peux la coller dans un message ❤️");
- }catch(e){
-  feedback("La copie d'image n'est pas disponible ici. Essaie Partager ma carte ou Enregistrer ma carte.");
- }
+
+  html += `
+    </div>
+    <p class="muted">
+      Choisis ce qui te ressemble le plus aujourd'hui.
+    </p>
+  `;
+
+  render(html);
 }
-async function shareCard(){
- try{
-  if(!navigator.share)
-   throw new Error("Partage indisponible");
-  const blob=await cardBlob();
-  const file=new File([blob],"mon-mantra-aurore.png",{
-   type:"image/png"
+
+function answer(i, button) {
+  if (busy) return;
+  busy = true;
+
+  button.classList.add("selected");
+
+  const r = button.getBoundingClientRect();
+  sparks(r.left + r.width / 2, r.top + r.height / 2, 16);
+
+  answers.push(questions[step].options[i][1]);
+  step++;
+
+  setTimeout(() => {
+    busy = false;
+    if (step < 3) transition();
+    else finalTransition();
+  }, 350);
+}
+
+function transition() {
+  const messages = [
+    "Tu vois… parfois, on a tellement l'habitude de penser comme ça qu'on ne s'en rend même plus compte.",
+    "Et maintenant, j'aimerais te poser une dernière petite question."
+  ];
+
+  render(`
+    <div class="symbol">✦</div>
+
+    <h2>
+      Attends, juste<br>
+      <span class="script">une seconde...</span>
+    </h2>
+
+    <div class="note">${messages[step - 1]}</div>
+
+    <button class="primary" onclick="question()">
+      On continue ✦
+    </button>
+  `);
+}
+
+function finalTransition() {
+  setProgress(3);
+
+  render(`
+    <div class="symbol">✧</div>
+
+    <h2>
+      Tu sais quoi ?<br>
+      <span class="script">C'est intéressant...</span>
+    </h2>
+
+    <p class="lead">
+      En trois petites questions, tu viens déjà
+      de mettre des mots sur certaines choses.
+      <br><br>
+      Et parfois, rien que ça, ça fait du bien.
+      <br><br>
+      Maintenant, j'aimerais te montrer
+      ce qui ressort de tes réponses.
+    </p>
+
+    <button class="primary" onclick="reveal()">
+      Je veux voir ✦
+    </button>
+  `);
+}
+
+function determine() {
+  const scores = {};
+  keys.forEach(k => scores[k] = 0);
+  answers.forEach(k => scores[k]++);
+
+  profile = answers[0];
+
+  keys.forEach(k => {
+    if (scores[k] > scores[profile]) profile = k;
   });
-  if(navigator.canShare&&!navigator.canShare({files:[file]}))
-   throw new Error("Partage de fichier indisponible");
-  await navigator.share({
-   files:[file],
-   title:"Mon mantra personnel"
+}
+
+function reveal() {
+  determine();
+  setProgress(4);
+
+  const p = data[profile];
+
+  render(`
+    <div class="kicker">
+      Ce que tes réponses racontent
+    </div>
+
+    <div class="paper">
+      <h2>${p.title}</h2>
+      <div class="divider"></div>
+      <p>${p.text}</p>
+    </div>
+
+    <p class="muted" style="margin-top:20px">
+      Ce n'est pas une étiquette ni une vérité absolue.
+      Juste une piste pour regarder les choses autrement.
+    </p>
+
+    <button class="primary" onclick="transform()">
+      Et si on changeait ces mots ? ✦
+    </button>
+  `);
+}
+
+function transform() {
+  const p = data[profile];
+
+  render(`
+    <div class="kicker">Les mots peuvent changer</div>
+
+    <h2>
+      Cette petite phrase<br>
+      <span class="script">dans ta tête...</span>
+    </h2>
+
+    <div id="old" class="oldwords">
+      « ${p.old} »
+    </div>
+
+    <p class="muted">
+      Et si tu essayais de te dire autre chose ?
+    </p>
+
+    <button
+      id="transformButton"
+      class="primary"
+      onclick="doTransform()">
+      Transformer ces mots ✦
+    </button>
+  `);
+}
+
+function doTransform() {
+  const old = document.getElementById("old");
+  const btn = document.getElementById("transformButton");
+
+  if (!old || !btn) return;
+
+  btn.disabled = true;
+  old.classList.add("dissolve");
+  centerSparks();
+
+  setTimeout(() => {
+    old.outerHTML = `
+      <div class="newwords">
+        « ${data[profile].affirm} »
+      </div>
+    `;
+
+    btn.outerHTML = `
+      <p class="lead" style="margin-top:22px">
+        Tu n'es pas obligée d'y croire à 100 % tout de suite.
+        <br>
+        Mais tu peux commencer à laisser
+        un peu de place à cette idée.
+      </p>
+
+      <button class="primary" onclick="chooseWords()">
+        Je veux mon mantra ✦
+      </button>
+    `;
+  }, reduced.matches ? 50 : 750);
+}
+
+function affirmations() {
+  const result = [];
+
+  answers.forEach(k => {
+    const a = data[k].affirm;
+    if (!result.includes(a)) result.push(a);
   });
- }catch(e){
-  if(e.name==="AbortError")return;
-  feedback("Le partage direct n'est pas disponible ici. Tu peux enregistrer la carte.");
- }
+
+  for (const extra of data[profile].more) {
+    if (result.length >= 3) break;
+    if (!result.includes(extra)) result.push(extra);
+  }
+
+  return result.slice(0, 3);
 }
-async function copyMantra(){
- const text=mantraLines().join("\n");
- try{
-  await navigator.clipboard.writeText(text);
-  feedback("Le texte de ton mantra est copié ❤️");
- }catch(e){
-  const area=document.createElement("textarea");
-  area.value=text;
-  area.style.position="fixed";
-  area.style.opacity="0";
-  document.body.appendChild(area);
-  area.select();
-  let ok=false;
-  try{ok=document.execCommand("copy")}catch(err){}
-  area.remove();
-  feedback(ok?"Le texte est copié ❤️":
-   "La copie n'est pas disponible sur ce navigateur.");
- }
+
+function chooseWords() {
+  const list = affirmations();
+
+  let html = `
+    <div class="kicker">Des mots rien que pour toi</div>
+
+    <h2>
+      Qu'est-ce que tu aimerais<br>
+      <span class="script">te dire aujourd'hui ?</span>
+    </h2>
+
+    <p class="lead">
+      J'ai préparé quelques phrases à partir de tes réponses.
+      <br>
+      Choisis celle qui te parle le plus.
+    </p>
+
+    <div class="choices">
+  `;
+
+  list.forEach((a, i) => {
+    html += `
+      <button class="choice" onclick="selectAffirm(${i})">
+        <span class="star">✧</span>${esc(a)}
+      </button>
+    `;
+  });
+
+  html += "</div>";
+  render(html);
 }
+
+function selectAffirm(i) {
+  chosen = i;
+  setProgress(5);
+
+  render(`
+    <div class="symbol">✦</div>
+
+    <h2>
+      Encore une toute<br>
+      <span class="script">petite chose...</span>
+    </h2>
+
+    <p class="lead">
+      J'aimerais que ce mantra soit vraiment le tien.
+      Alors dis-moi, comment tu t'appelles ?
+    </p>
+
+    <label class="kicker" for="firstname" style="display:block">
+      TON PRÉNOM
+    </label>
+
+    <input
+      id="firstname"
+      maxlength="35"
+      autocomplete="given-name"
+      placeholder="Écris ton prénom ici">
+
+    <button class="primary" onclick="makeMantra()">
+      Découvrir mon mantra ✦
+    </button>
+  `);
+}
+
+function mantraLines() {
+  const list = affirmations();
+  const selected = list[chosen];
+  const others = list.filter((_, i) => i !== chosen);
+
+  const lines = [
+    "Moi, " + (firstName || "moi") + ",",
+    selected,
+    ...others,
+    "Je m'autorise à avancer à mon rythme.",
+    "Je fais de la place à ce qui me fait du bien.",
+    "J'apprends à m'écouter davantage.",
+    "Mes envies comptent aussi.",
+    "Je mérite une vie qui me ressemble.",
+    "Je me choisis.",
+    "Je suis à ma place.",
+    "Je suis moi."
+  ];
+
+  return [...new Set(lines)];
+}
+
+function makeMantra() {
+  const el = document.getElementById("firstname");
+  firstName = (el ? el.value : "").trim().slice(0, 35);
+
+  centerSparks();
+  showMantra();
+}
+
+function showMantra() {
+  const lines = mantraLines();
+  const p = data[profile];
+
+  let lineHtml = "";
+
+  lines.forEach((line, i) => {
+    const cls =
+      i === 0 ? "first" :
+      i === lines.length - 1 ? "last" : "";
+
+    lineHtml += `
+      <span
+        class="mantra-line ${cls}"
+        style="animation-delay:${i * .1}s">
+        ${esc(line)}
+      </span>
+    `;
+  });
+
+  render(`
+    <div class="kicker">Ton nouveau chapitre</div>
+
+    <div class="result-layout">
+
+      <div class="paper" id="mantraCard">
+        <div class="kicker">Les mots que je choisis</div>
+        <h2>Mon mantra personnel</h2>
+        <div class="divider"></div>
+
+        <div class="mantra">
+          ${lineHtml}
+        </div>
+
+        <div class="divider"></div>
+
+        <p style="font-size:11px;margin:0">
+          Les soins de lumière d'Aurore
+        </p>
+      </div>
+
+      <div class="result-after">
+
+        <p class="lead" style="margin-top:15px">
+          Garde ces mots quelque part.
+          <br><br>
+          Et les jours où tu recommences à douter de toi,
+          reviens les lire.
+          <br><br>
+          Parfois, on a juste besoin de se rappeler
+          qu'on a le droit de prendre sa place. ❤️
+        </p>
+
+        <button class="primary" onclick="copyCard()">
+          Copier ma carte ✦
+        </button>
+
+        <button class="secondary" onclick="saveCard()">
+          Enregistrer ma carte
+        </button>
+
+        <button class="secondary" onclick="shareCard()">
+          Partager ma carte
+        </button>
+
+        <button class="secondary" onclick="copyMantra()">
+          Copier uniquement le texte
+        </button>
+
+        <p id="feedback" class="muted" role="status"></p>
+
+        <div class="action">
+          <div class="kicker">
+            Et maintenant, dans la vraie vie ?
+          </div>
+
+          <h3>Ton petit défi du jour</h3>
+          <p>${p.action}</p>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2>
+          Et si tu avais envie<br>
+          <span class="script">d'aller plus loin ?</span>
+        </h2>
+
+        <p class="lead">
+          Tu sais, certaines pensées, on les traîne
+          depuis tellement longtemps qu'on ne sait
+          même plus d'où elles viennent.
+          <br><br>
+          Et parfois, même quand on a compris
+          qu'elles nous freinent, elles continuent de revenir.
+          <br><br>
+          C'est aussi sur ces croyances que je travaille
+          pendant mes séances d'Alchimie Cellulaire.
+          <br><br>
+          Alors si tu sens que tu as envie d'explorer
+          tout ça plus profondément, je te laisse
+          découvrir tranquillement. ❤️
+        </p>
+
+        <a
+          class="primary"
+          href="https://www.lessoinsdelumieredaurore.com/service-page/alchimie-cellulaire"
+          target="_blank"
+          rel="noopener noreferrer">
+          Découvrir Alchimie Cellulaire ✦
+        </a>
+
+        <button class="secondary" onclick="welcome()">
+          Recommencer l'expérience
+        </button>
+
+      </div>
+    </div>
+  `, true);
+}
+
+/* CRÉATION DE LA CARTE EN IMAGE */
+
+function createCardCanvas() {
+  const canvas = document.createElement("canvas");
+  canvas.width = 1080;
+  canvas.height = 1600;
+
+  const ctx = canvas.getContext("2d");
+  if (!ctx) throw new Error("Canvas indisponible");
+
+  const bg = ctx.createLinearGradient(0, 0, 1080, 1600);
+  bg.addColorStop(0, "#FFF9EF");
+  bg.addColorStop(1, "#E8D5BB");
+
+  ctx.fillStyle = bg;
+  ctx.fillRect(0, 0, 1080, 1600);
+
+  ctx.strokeStyle = "#A87443";
+  ctx.lineWidth = 3;
+  ctx.strokeRect(45, 45, 990, 1510);
+
+  ctx.lineWidth = 1;
+  ctx.strokeRect(60, 60, 960, 1480);
+
+  ctx.textAlign = "center";
+  ctx.fillStyle = "#A87443";
+  ctx.font = "50px Georgia";
+  ctx.fillText("✦", 540, 150);
+
+  ctx.fillStyle = "#4A3022";
+  ctx.font = "60px Georgia";
+  ctx.fillText("Mon mantra personnel", 540, 240);
+
+  ctx.beginPath();
+  ctx.strokeStyle = "#A87443";
+  ctx.moveTo(390, 290);
+  ctx.lineTo(690, 290);
+  ctx.stroke();
+
+  const lines = mantraLines();
+  let fontSize = 39;
+  let wrapped = [];
+  let lineHeight = 60;
+
+  function wrap() {
+    wrapped = [];
+    ctx.font = fontSize + "px Georgia";
+
+    for (const line of lines) {
+      const words = line.split(" ");
+      let current = "";
+
+      for (const word of words) {
+        const trial = current ? current + " " + word : word;
+
+        if (ctx.measureText(trial).width > 850 && current) {
+          wrapped.push(current);
+          current = word;
+        } else {
+          current = trial;
+        }
+      }
+
+      if (current) wrapped.push(current);
+    }
+  }
+
+  wrap();
+
+  while (wrapped.length * lineHeight > 1050 && fontSize > 24) {
+    fontSize -= 2;
+    lineHeight -= 2;
+    wrap();
+  }
+
+  ctx.fillStyle = "#4A3022";
+  ctx.font = fontSize + "px Georgia";
+
+  const total = wrapped.length * lineHeight;
+  let y = 340 + (1050 - total) / 2 + lineHeight / 2;
+
+  for (const line of wrapped) {
+    ctx.fillText(line, 540, y);
+    y += lineHeight;
+  }
+
+  ctx.strokeStyle = "#A87443";
+  ctx.beginPath();
+  ctx.moveTo(390, 1450);
+  ctx.lineTo(690, 1450);
+  ctx.stroke();
+
+  ctx.font = "25px Georgia";
+  ctx.fillStyle = "#8B623E";
+  ctx.fillText("Les soins de lumière d'Aurore", 540, 1500);
+
+  return canvas;
+}
+
+function cardBlob() {
+  return new Promise((resolve, reject) => {
+    try {
+      createCardCanvas().toBlob(blob => {
+        blob
+          ? resolve(blob)
+          : reject(new Error("Image indisponible"));
+      }, "image/png");
+    } catch (e) {
+      reject(e);
+    }
+  });
+}
+
+function feedback(message) {
+  const el = document.getElementById("feedback");
+  if (el) el.textContent = message;
+}
+
+function downloadBlob(blob) {
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+
+  a.href = url;
+  a.download = "mon-mantra-aurore.png";
+
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+
+  setTimeout(() => URL.revokeObjectURL(url), 3000);
+}
+
+async function saveCard() {
+  try {
+    const blob = await cardBlob();
+    downloadBlob(blob);
+    feedback("Ta carte est prête dans tes téléchargements ❤️");
+  } catch (e) {
+    feedback("Impossible de créer la carte sur ce navigateur.");
+  }
+}
+
+async function copyCard() {
+  try {
+    if (!navigator.clipboard || !window.ClipboardItem) {
+      throw new Error("Copie image indisponible");
+    }
+
+    const item = new ClipboardItem({
+      "image/png": cardBlob()
+    });
+
+    await navigator.clipboard.write([item]);
+
+    feedback("Ta carte est copiée ! Tu peux la coller dans un message ❤️");
+  } catch (e) {
+    feedback(
+      "La copie d'image n'est pas disponible ici. Essaie Partager ma carte ou Enregistrer ma carte."
+    );
+  }
+}
+
+async function shareCard() {
+  try {
+    if (!navigator.share) {
+      throw new Error("Partage indisponible");
+    }
+
+    const blob = await cardBlob();
+
+    const file = new File(
+      [blob],
+      "mon-mantra-aurore.png",
+      {type: "image/png"}
+    );
+
+    if (navigator.canShare && !navigator.canShare({files: [file]})) {
+      throw new Error("Partage de fichier indisponible");
+    }
+
+    await navigator.share({
+      files: [file],
+      title: "Mon mantra personnel"
+    });
+  } catch (e) {
+    if (e.name === "AbortError") return;
+
+    feedback(
+      "Le partage direct n'est pas disponible ici. Tu peux enregistrer la carte."
+    );
+  }
+}
+
+async function copyMantra() {
+  const text = mantraLines().join("\n");
+
+  try {
+    await navigator.clipboard.writeText(text);
+    feedback("Le texte de ton mantra est copié ❤️");
+  } catch (e) {
+    const area = document.createElement("textarea");
+
+    area.value = text;
+    area.style.position = "fixed";
+    area.style.opacity = "0";
+
+    document.body.appendChild(area);
+    area.select();
+
+    let ok = false;
+
+    try {
+      ok = document.execCommand("copy");
+    } catch (err) {}
+
+    area.remove();
+
+    feedback(
+      ok
+        ? "Le texte est copié ❤️"
+        : "La copie n'est pas disponible sur ce navigateur."
+    );
+  }
+}
+
 welcome();
 </script>
+
 </body>
 </html>
